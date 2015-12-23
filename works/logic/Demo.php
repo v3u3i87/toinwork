@@ -8,11 +8,11 @@
 
 namespace works\logic;
 
-class Demo{
+class Info{
 
 
-    public function main(){
-        echo 'logic-demo';
+    public function in(){
+        echo 11111;
         echo '<br />';
     }
 

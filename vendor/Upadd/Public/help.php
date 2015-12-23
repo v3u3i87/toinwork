@@ -115,11 +115,13 @@ if(! function_exists('lode')) {
      */
     function lode($type, $data)
     {
+        $val = null;
         if (is_string($data)) {
-            return explode($type, $data);
+            $val = explode($type, $data);
         } elseif (is_array($data)) {
-            return implode($type, $data);
+            $val = implode($type, $data);
         }
+        return $val;
     }
 }
 
@@ -307,39 +309,6 @@ if(!function_exists('msg'))
         )));
     }
 }
-
-
-if ( ! function_exists('param'))
-{
-    /**
-     * 获取数据
-     * @param null $k
-     * @param null $default
-     * @param null $check as callable or array
-     * @return bool|null
-     */
-    function param($k=null,$default=null,$check=null) {
-        if(isset($_GET[$k])){
-            $default = $_GET[$k];
-        }elseif(isset($_POST[$k])){
-            $default = $_POST[$k];
-        }elseif(METHOD==='GET'){
-            $default =  $_GET;
-        }elseif(METHOD==='POST'){
-            $default =  $_POST;
-        }
-
-        if(is_array($check)){
-           $_check = new \Upadd\Frame\Check();
-        }elseif(is_callable($check)){
-            call_user_func($check,$default);
-        }
-
-        return $default;
-    }
-
-}
-
 
 if(!function_exists('jump_view')){
     /**
