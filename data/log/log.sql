@@ -46,4 +46,28 @@ Info: SELECT  *  FROM tiw_user_account  WHERE email='z@zmq.cc' AND passwd='a2bea
 Time: 2015-12-24 16:47:55
 Info: SELECT  *  FROM tiw_user_account  WHERE  email='office@zmq.cc' URL:/api/user/login
 Time: 2015-12-24 16:47:55
-Info: SELECT  *  FROM tiw_user_account  WHERE email='office@zmq.cc' AND passwd='a2beafae9fa6aefad0c0315c0ec719b2' 
+Info: SELECT  *  FROM tiw_user_account  WHERE email='office@zmq.cc' AND passwd='a2beafae9fa6aefad0c0315c0ec719b2' URL:/api/user/login
+Time: 2015-12-24 16:54:27
+Info: SELECT  *  FROM tiw_user_account  WHERE  email='office@zmq.cc' URL:/api/user/login
+Time: 2015-12-24 16:54:27
+Info: SELECT  *  FROM tiw_user_account  WHERE email='office@zmq.cc' AND passwd='a2beafae9fa6aefad0c0315c0ec719b2' URL:/api/user/login
+Time: 2015-12-24 16:54:37
+Info: SELECT  *  FROM tiw_user_account  WHERE  email='office@zmq.cc' URL:/api/user/login
+Time: 2015-12-24 16:54:38
+Info: SELECT  *  FROM tiw_user_account  WHERE email='office@zmq.cc' AND passwd='a2beafae9fa6aefad0c0315c0ec719b2' URL:/api/user/login
+Time: 2015-12-24 17:26:52
+Info: SELECT  *  FROM tiw_user_account  WHERE  email='office@zmq.cc' URL:/api/user/login
+Time: 2015-12-24 17:26:52
+Info: SELECT  *  FROM tiw_user_account  WHERE email='office@zmq.cc' AND passwd='a2beafae9fa6aefad0c0315c0ec719b2' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:11:20
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:11:44
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be1' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:11:48
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:12:03
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:19:31
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' URL:/api/user/edit/passwd
+Time: 2015-12-24 18:19:36
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' 

@@ -17,7 +17,6 @@ class UserAction extends BaseAction{
         $this->_userMo = new UserAccount();
     }
 
-
     public function add()
     {
         $email = Data::get('email',null,function($val)
@@ -89,7 +88,6 @@ class UserAction extends BaseAction{
             return $val;
         });
 
-
         $passwd = Data::get('passwd',null,function($val)
         {
             if(empty($val))
@@ -103,8 +101,55 @@ class UserAction extends BaseAction{
         {
             $this->msg(200,'登陆成功',$loginInfo);
         }
+
         $this->msg(206,'邮箱或是密码错误');
     }
 
-    
+    public function editPasswd(){
+
+        $accInfo = Data::get('token',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,token不能为空');
+            }
+            $val = UserLogic::verifyTokenExpired($val);
+            if($val){
+                return $val;
+            }
+            $this->msg(205,'过期或是不存在');
+        });
+
+        $passwd = Data::get('passwd',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,确认密码不能为空');
+            }
+            return $val;
+        });
+
+        $notPasswd = Data::get('not_passwd',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,确认密码不能为空');
+            }
+            return $val;
+        });
+
+        if($passwd !== $notPasswd)
+        {
+            $this->msg(205,'抱歉,密码不相同');
+        }
+
+        if(UserAccount::editUserPasswd($accInfo['uid'],$passwd))
+        {
+            $this->msg(200,'密码修改成功');
+        }
+        $this->msg(206,'服务器有点繁忙,请稍后');
+
+    }
+
+
 }

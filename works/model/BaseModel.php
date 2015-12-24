@@ -9,6 +9,6 @@
  */
 namespace works\model;
 
-use Upadd\Frame\Model;
+use Model;
 
 class BaseModel extends Model{}

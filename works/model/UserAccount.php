@@ -74,6 +74,34 @@ class UserAccount extends BaseModel{
     }
 
 
+    /**
+     * token验证
+     * @param $token
+     * @return mixed
+     */
+    public static function tokenCheck($token){
+        return self::where(array('access_token'=>$token))->find();
+    }
+
+
+    /**
+     * 修改密码
+     * @param null $uid
+     * @param string $passwd
+     * @return bool
+     */
+    public static function editUserPasswd($uid=null,$passwd='abc1234567890')
+    {
+        if(empty($uid))
+        {
+            return false;
+        }
+        $_data = array(
+            'passwd'=>md5($passwd.Config::get('tag@user_key')),
+            'update_time'=>time()
+        );
+        return self::save($_data,array('uid'=>$uid));
+    }
 
 
 

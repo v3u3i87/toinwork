@@ -20,7 +20,12 @@ return array(
      */
     'front_domain'=>'http://up.int.com',
 
-    'user_key'=>'QnKIE123##@@'
+    'user_key'=>'QnKIE123##@@',
+
+    /**
+     * 获取凭证有效天数
+     */
+    'user_access_time_day'=>1
 
 
 );
