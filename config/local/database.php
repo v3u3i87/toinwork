@@ -13,10 +13,10 @@ return array(
         'host'=>'127.0.0.1',
         'user'=>'root',
         'pass'=>'maoqiang',
-        'name'=>'wanju',
+        'name'=>'toinwork',
         'port'=>3306,
         'charset'=>'UTF8',
-        'prefix'=>'edu_',
+        'prefix'=>'tiw_',
     )
 
 );

@@ -20,5 +20,7 @@ return array(
      */
     'front_domain'=>'http://up.int.com',
 
+    'user_key'=>'QnKIE123##@@'
+
 
 );
