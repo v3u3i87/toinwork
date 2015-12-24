@@ -45,4 +45,36 @@ class UserAccount extends BaseModel{
     }
 
 
+    /**
+     * 查询用户名
+     * @param $email
+     * @return mixed
+     */
+    public static function findUname($uname){
+        return self::where(array('uname'=>$uname))->find();
+    }
+
+    /**
+     * 查询手机号
+     * @param $email
+     * @return mixed
+     */
+    public static function findMobile($mobile){
+        return self::where(array('mobile'=>$mobile))->find();
+    }
+
+
+    /**
+     * 查询手机号
+     * @param $email
+     * @return mixed
+     */
+    public static function loginCheck($email,$passwd){
+        return self::where(array('email'=>$email,'passwd'=>md5($passwd.Config::get('tag@user_key'))))->find();
+    }
+
+
+
+
+
 }
