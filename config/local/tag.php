@@ -25,7 +25,16 @@ return array(
     /**
      * 获取凭证有效天数
      */
-    'user_access_time_day'=>1
+    'user_access_time_day'=>1,
+
+    /**
+     * 图片上传的类型
+     */
+    'load_type'=>array(
+        //个人头像
+        'icon',
+
+    ),
 
 
 );

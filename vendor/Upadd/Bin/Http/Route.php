@@ -23,6 +23,10 @@ class Route extends Request{
 
     public $_resou = array();
 
+    public static $action = null;
+
+    public static $method = null;
+
     /**
      * set group
      * @param array $method
@@ -104,6 +108,19 @@ class Route extends Request{
             'filters'=>$this->filters,
             'type'=>$type
         );
+    }
+
+    /**
+     * 获取控制器
+     * @param null $_action
+     * @param null $_method
+     */
+    public function setAction($_action=null,$_method=null)
+    {
+        if($_action && $_method){
+            static::$action = $_action;
+            static::$method = $_method;
+        }
     }
 
 

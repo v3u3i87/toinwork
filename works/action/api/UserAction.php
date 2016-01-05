@@ -6,6 +6,7 @@ use Data;
 use works\action\BaseAction;
 use works\logic\UserLogic;
 use works\model\UserAccount;
+use works\model\UserInfo;
 
 class UserAction extends BaseAction{
 
@@ -17,6 +18,9 @@ class UserAction extends BaseAction{
         $this->_userMo = new UserAccount();
     }
 
+    /**
+     * 新增账号
+     */
     public function add()
     {
         $email = Data::get('email',null,function($val)
@@ -39,7 +43,7 @@ class UserAction extends BaseAction{
         {
             if(empty($val))
             {
-                $this->msg(205,'抱歉,确认密码不能为空');
+                $this->msg(205,'抱歉,密码不能为空');
             }
             return $val;
         });
@@ -105,6 +109,9 @@ class UserAction extends BaseAction{
         $this->msg(206,'邮箱或是密码错误');
     }
 
+    /**
+     * 修改密码
+     */
     public function editPasswd(){
 
         $accInfo = Data::get('token',null,function($val)
@@ -150,6 +157,108 @@ class UserAction extends BaseAction{
         $this->msg(206,'服务器有点繁忙,请稍后');
 
     }
+
+
+    /**
+     * 修改个人资料
+     */
+    public function editInfo()
+    {
+
+        $accInfo = Data::get('token',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,token不能为空');
+            }
+            $val = UserLogic::verifyTokenExpired($val);
+            if($val){
+                return $val;
+            }
+            $this->msg(205,'过期或是不存在');
+        });
+
+        //昵称
+        if($nickname = Data::get('nickname',false))
+        {
+            $_data['nickname'] = $nickname;
+        }
+
+        //真实姓名
+        if($user_name = Data::get('user_name',false))
+        {
+            $_data['user_name'] = $user_name;
+        }
+
+        //身份证号码
+        if($identity = Data::get('identity',false))
+        {
+            $_data['identity'] = $identity;
+        }
+
+        //头像
+        if($icon = Data::get('icon',false))
+        {
+            $_data['icon'] = $icon;
+        }
+
+        //年龄
+        if($age = Data::get('age',false))
+        {
+            $_data['age'] = $age;
+        }
+
+        //性别 1/女  2/男
+        if($sex = Data::get('sex',false))
+        {
+            $_data['sex'] = $sex;
+        }
+
+        //职务
+        if($position = Data::get('position',false))
+        {
+            $_data['position'] = $sex;
+        }
+
+        if(UserInfo::UserEdit($accInfo['uid'],$_data))
+        {
+            $this->msg(200,'编辑成功');
+        }
+
+        $this->msg(206,'服务器有点繁忙,请稍后');
+
+    }
+
+
+    /**
+     * 昵称资料
+     */
+    public function nickname(){
+        $accInfo = Data::get('token',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,token不能为空');
+            }
+            $val = UserLogic::verifyTokenExpired($val);
+            if($val){
+                return $val;
+            }
+            $this->msg(205,'过期或是不存在');
+        });
+
+        $info = UserInfo::where(array('uid'=>$accInfo['uid']))->find('position,sex,icon,nickname');
+
+        if($info){
+            $this->msg(200,$info);
+        }
+
+        $this->msg(206,'没有任何资料');
+    }
+
+
+
+
 
 
 }

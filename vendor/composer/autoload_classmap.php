@@ -32,6 +32,7 @@ return array(
     'Upadd\\Bin\\Tool\\Rbac' => $vendorDir . '/Upadd/Bin/Tool/Rbac.php',
     'Upadd\\Bin\\Tool\\Security' => $vendorDir . '/Upadd/Bin/Tool/Security.php',
     'Upadd\\Bin\\Tool\\Session' => $vendorDir . '/Upadd/Bin/Tool/Session.php',
+    'Upadd\\Bin\\Tool\\Upload' => $vendorDir . '/Upadd/Bin/Tool/Upload.php',
     'Upadd\\Bin\\Tool\\Verify' => $vendorDir . '/Upadd/Bin/Tool/Verify.php',
     'Upadd\\Bin\\UpaddException' => $vendorDir . '/Upadd/Bin/UpaddException.php',
     'Upadd\\Bin\\View\\Tag' => $vendorDir . '/Upadd/Bin/View/Tag.php',

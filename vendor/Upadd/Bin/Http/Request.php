@@ -61,15 +61,16 @@ class Request{
     /**
      * 命令行模式
      */
-    public function setCli(){
+    public function setCli()
+    {
         $cli_action_autoload = Config::get('start@cli_action_autoload');
-        if(isset($this->_cliData['u']) && isset($this->_cliData['p'])) {
+        if(isset($this->_cliData['u']) && isset($this->_cliData['p']))
+        {
             $this->getAction($cli_action_autoload . $this->_cliData['u'] . 'Action' . '@' . $this->_cliData['p']);
         }
         unset($this->_cliData['u']);
         unset($this->_cliData['p']);
         return $this->Instantiation();
-
     }
 
     /**
@@ -164,12 +165,23 @@ class Request{
         }
     }
 
+    public function getRoute()
+    {
+        if(isset($this->_work['Route']))
+        {
+            return $this->_work['Route'];
+        }
+        throw new UpaddException('请求获取路由失败');
+    }
+
     /**
      * 获取控制器
      * @throws UpaddException
      */
     public function getAction($methods){
         if($_objAction = explode('@',$methods)){
+            //路由设置控制器
+            $this->getRoute()->setAction($_objAction[0],$_objAction[1]);
             return list($this->_action, $this->_method) = $_objAction;
         }
         throw new UpaddException('The Action set wrong..');
