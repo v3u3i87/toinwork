@@ -4,7 +4,7 @@ Routes::get('/', 'works\action\MainAction@login');
 //登陆
 Routes::get('/api/user/login','works\action\api\UserAction@login');
 
-Routes::group(array('prefix' => '/api','filters'=>'rbac'),function() {
+Routes::group(array('prefix' => '/api'),function() {
 
     //新增账号
     Routes::get('/user/new','works\action\api\UserAction@add');
@@ -31,6 +31,10 @@ Routes::group(array('prefix' => '/api','filters'=>'rbac'),function() {
 
     //获取设计表结构
     Routes::get('/design/get/table','works\action\api\DesignAction@table');
+
+    //新增工作
+    Routes::get('/works/new/add','works\action\api\worksAction@newAdd');
+
 
 
 

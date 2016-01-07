@@ -1060,4 +1060,10 @@ Info: SELECT  *  FROM tiw_project  WHERE id='7' URL:/api/design/get/table?tok
 Time: 2016-01-07 17:29:10
 Info: SELECT  *  FROM tiw_work_design  WHERE  project_id='7' AND id='21' URL:/api/design/get/table?token=745133cf41e75bc9da930c80eb37c2924a0975be&design_id=21&project_id=7
 Time: 2016-01-07 17:29:10
-Info: SELECT  id as template_id,work_design_id,tag_id,tag_data,works_name,set_default,sole,sort,relate_id,is_status as status FROM tiw_work_template  WHERE  work_design_id='21'   ORDER BY sort ASC
+Info: SELECT  id as template_id,work_design_id,tag_id,tag_data,works_name,set_default,sole,sort,relate_id,is_status as status FROM tiw_work_template  WHERE  work_design_id='21'   ORDER BY sort ASCURL:/api/design/get/table?token=745133cf41e75bc9da930c80eb37c2924a0975be&project_id=7
+Time: 2016-01-07 17:48:19
+Info: SELECT  *  FROM tiw_user_account  WHERE access_token='745133cf41e75bc9da930c80eb37c2924a0975be' URL:/api/design/get/table?token=745133cf41e75bc9da930c80eb37c2924a0975be&project_id=7
+Time: 2016-01-07 17:48:19
+Info: SELECT  *  FROM tiw_project_user  WHERE project_id='7' AND uid='2' AND is_status='1' URL:/api/design/get/table?token=745133cf41e75bc9da930c80eb37c2924a0975be&project_id=7
+Time: 2016-01-07 17:48:19
+Info: SELECT  *  FROM tiw_project  WHERE id='7' 
