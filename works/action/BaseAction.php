@@ -10,6 +10,11 @@ namespace works\action;
 
 use Upadd\Frame\Action;
 
+use Data;
+use Config;
+use works\logic\UserLogic;
+use works\logic\ProjectLogic;
+
 class BaseAction extends Action{
 
     /**
@@ -24,6 +29,49 @@ class BaseAction extends Action{
         exit(json(array('code'=>$code,'msg'=>$msg,'data'=>$data)));
     }
 
+    /**
+     * 判断token
+     * @return mixed
+     */
+    public function is_token(){
+        return Data::get('token',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,token不能为空');
+            }
+            $val = UserLogic::verifyTokenExpired($val);
 
+            if($val){
+                return $val;
+            }
+            $this->msg(205,'过期或是不存在');
+        });
+    }
+
+
+    /**
+     * 判断会员是否属于项目区,并返回项目资料
+     * @param $uid
+     * @return mixed
+     */
+    public function is_user_get_project($uid)
+    {
+        return Data::get('project_id',null,function($project_id) use ($uid)
+        {
+            if(empty($project_id))
+            {
+                $this->msg(205,'抱歉,project_id参数不能为空');
+            }
+
+            if($project_id = ProjectLogic::is_user_project_find($uid,$project_id))
+            {
+                return $project_id;
+            }
+
+            $this->msg(205,'抱歉,您不是该项目区的.');
+
+        });
+    }
 
 }

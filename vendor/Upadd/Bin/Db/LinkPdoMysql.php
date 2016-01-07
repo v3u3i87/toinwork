@@ -33,13 +33,11 @@ class LinkPdoMysql implements Db{
      */
     public function select($sql)
     {
-        if($sql)
-        {
-            $result = $this->query($sql);
+        $result = $this->query($sql);
+        if($result){
             return $result->fetchAll(2);
-        }else{
-            return false;
         }
+        return false;
     }
 
     /**
@@ -49,13 +47,12 @@ class LinkPdoMysql implements Db{
      */
     public function find($sql)
     {
-        if($sql)
+        $result = $this->query ( $sql );
+        if($result)
         {
-            $result = $this->query ( $sql );
             return $result->fetch(2);
-        }else{
-            return false;
         }
+        return false;
     }
 
     /**

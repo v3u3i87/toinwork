@@ -69,7 +69,7 @@ class DesignLogic{
                     $WorkDesignModel->rollback();
                     return false;
                 }
-                
+
             }else{
                 //返回验证失败的状态码
                 return $is_check_edit;
@@ -147,6 +147,36 @@ class DesignLogic{
         }
         return true;
     }
+
+
+    /**
+     * 获取列表数据
+     * @param $project_id
+     * @param $design_id
+     * @return array|bool
+     */
+    public static function getTable($project_id,$design_id)
+    {
+        $designData = WorkDesign::where(" project_id='{$project_id}' AND id='{$design_id}' ")->find();
+        if($designData)
+        {
+
+           $template  = WorkTemplate::where(" work_design_id='{$designData['id']}' ")->sort('sort',false)->get(" id as template_id,work_design_id,tag_id,tag_data,works_name,set_default,sole,sort,relate_id,is_status as status");
+           if($template){
+               return array(
+                   'design'=>array(
+                       'design_id'=>$designData['id'],
+                       'name'=>$designData['name'],
+                       'icon'=>$designData['icon']
+                   ),
+                   'template'=>$template
+               );
+           }
+        }
+        return false;
+
+    }
+
 
 
 }

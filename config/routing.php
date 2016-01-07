@@ -29,6 +29,10 @@ Routes::group(array('prefix' => '/api','filters'=>'rbac'),function() {
     //新增设计工作
     Routes::get('/design/add','works\action\api\DesignAction@add');
 
+    //获取设计表结构
+    Routes::get('/design/get/table','works\action\api\DesignAction@table');
+
+
 
 
 
