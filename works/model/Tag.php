@@ -34,7 +34,21 @@ class Tag extends \works\model\BaseModel{
         return false;
     }
 
-
+    /**
+     * 获取标签字段
+     * @return mixed
+     */
+    public static function getSysField(){
+        $data = self::where(array('type'=>1,'is_status'=>1))->get('data');
+        if($data) {
+            $tmp = [];
+            foreach ($data as $k => $v) {
+                $tmp[] = $v['data'];
+            }
+            return $tmp;
+        }
+        return false;
+    }
 
 
 

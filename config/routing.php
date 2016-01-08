@@ -33,7 +33,7 @@ Routes::group(array('prefix' => '/api'),function() {
     Routes::get('/design/get/table','works\action\api\DesignAction@table');
 
     //新增工作
-    Routes::get('/works/new/add','works\action\api\worksAction@newAdd');
+    Routes::get('/works/edit','works\action\api\worksAction@edit');
 
 
 
