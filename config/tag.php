@@ -18,7 +18,7 @@ return array(
     /**
      * 前端域名
      */
-    'front_domain'=>'http://up.int.com',
+    'front_domain'=>'http://tiw.int.com',
 
 
 );

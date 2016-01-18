@@ -113,12 +113,12 @@ class DesignAction extends BaseAction{
                 $this->msg(205,'抱歉,该工作表格不存');
             });
 
+
             //合并数据 返回json
             if($data = array_merge($data,$design))
             {
                 $this->msg(200,'ok',$data);
             }
-
             $this->msg(206,'服务器开小差了..');
 
         }

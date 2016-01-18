@@ -10,15 +10,19 @@
 
 namespace works\action;
 
+use Config;
+
 class MainAction extends BaseAction{
 
 
     /**
      * 登陆
      */
-    public function login(){
-        echo 13123;
+    public function login()
+    {
+        $this->view('login.html');
     }
+
 
 
 
