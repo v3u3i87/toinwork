@@ -79,18 +79,15 @@ class Query extends ProcessingSql{
      * @param null $_table
      * @return $this
      */
-    public function join($_table=null,$as=null)
+    public function join($_table=array())
     {
-        if(is_array($_table))
+        if(empty($_table)) return false;
+        $name = '';
+        foreach($_table as $k=>$v)
         {
-            $name = '';
-            foreach($_table as $k=>$v){
-                $name .= $this->db_prefix.$k.' as ' . $v .' ,';
-            }
-            $this->_sql['join'] =  $name;
-        }else{
-            $this->_sql['join'][] = $this->db_prefix.$_table.' as ' . $as .' ,';
+            $name .= $this->db_prefix.$k.' as ' . $v .' ,';
         }
+        $this->_join =  $name;
         return $this;
     }
 
@@ -162,9 +159,17 @@ class Query extends ProcessingSql{
     public function count_distinct($key,$field=null)
     {
         if($key){
-            $tmp = '';
-            if($field) $tmp = ','.$field;
-            $this->joint_field(" COUNT(distinct `{$key}`) as conut {$tmp} ");
+            $tmp = null;
+            if($field)
+            {
+                $tmp = ','."`$field`";
+            }
+            $sql = " COUNT(distinct `{$key}`) as conut ";
+            if($tmp)
+            {
+                $sql.=$tmp;
+            }
+            $this->joint_field($sql);
             $this->_db->_sql = 'SELECT '.$this->mergeSqlLogic();
             return $this->_db->getTotal();
         }
@@ -257,7 +262,7 @@ class Query extends ProcessingSql{
             return $this->add($this->parameter);
         }
 
-        if($this->parameter && $this->_where)
+        if($this->_where && $this->parameter)
         {
             return $this->update($this->parameter,$this->_where);
         }

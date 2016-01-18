@@ -1,37 +1,11 @@
 <?php
 
-//Routes::get('/', 'works\action\MainAction@login');
+Routes::get('/', 'works\action\MainAction@login');
 
-Routes::get('/', function(){
-
-    $test = new  \works\model\Test();
-
-//    p($test->findByPk(3),1);
-//
-////    $test->where(array('type'=>2))->count_distinct('id');
-//
-//    p($test->where(' id=2 ')->find(),1);
-//
-//    p($test->where(array('id'=>10))->find(),1);
-//
-//    p($test->where('type=2')->limit(3)->get('id,name'),1);
-//
-////    $get = $test->where('type=2')->limit(3)->sort('id',false)->get();
-//    p($test->where('type=3')->like('name','嘻')->limit(10)->sort('id',false)->get(array('id','type','name')));
-
-
-//    $test->where(array('id'=>15));
-//    $test->type = 5;
-//    $test->info = '我只是...';
-//    $test->name = '什么呢1';
-//    $tmp = $test->save(array('type'=>6,'info'=>'哈哈','name'=>1212),array('id'=>16));
-//    echo $tmp;
-
-});
-
-//登陆
+//登陆验证
 Routes::get('/api/user/login','works\action\api\UserAction@login');
 
+//组
 Routes::group(array('prefix' => '/api'),function() {
 
     //新增账号
