@@ -101,17 +101,17 @@ class Tag{
      */
     public function style(){
         return ($this->_file = preg_replace ( array(
+            "/\@load\(\'(.*?)\'\)/i",
             "/\@css\(\'(.*?)\'\)/i",
             "/\@public_css\(\'(.*?)\'\)/i",
             "/\@js\(\'(.*?)\'\)/i",
             "/\@public_js\(\'(.*?)\'\)/i",
-            "/\@load\(\'(.*?)\'\)/i",
         ), array(
+            '<?php include host()."works/view/$1"; ?>',
             $this->css(),
             $this->public_css(),
             $this->js(),
-            $this->public_js(),
-            '<?php include host()."$1"; ?>'
+            $this->public_js()
         ), $this->_file ));
     }
 
@@ -140,7 +140,7 @@ class Tag{
      */
     public function js(){
         $js = $this->front_domain.'/resou/js/'."$1";
-        return "<script type=\"text/javascript\" href=\"{$js}\"></script>";
+        return "<script type=\"text/javascript\" src=\"{$js}\"></script>";
     }
 
 
@@ -150,7 +150,7 @@ class Tag{
      */
     public function public_js(){
         $js = $this->front_domain."$1";
-        return "<script type=\"text/javascript\" href=\"{$js}\"></script>";
+        return "<script type=\"text/javascript\" src=\"{$js}\"></script>";
     }
 
 

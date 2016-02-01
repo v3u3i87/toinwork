@@ -34,7 +34,7 @@ Routes::group(array('prefix' => '/api'),function() {
     //获取设计表结构
     Routes::get('/design/get/table','works\action\api\DesignAction@table');
 
-    //新增工作
+    //编辑工作
     Routes::get('/works/edit','works\action\api\worksAction@edit');
 
 });

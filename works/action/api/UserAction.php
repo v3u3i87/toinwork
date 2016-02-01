@@ -24,19 +24,19 @@ class UserAction extends BaseAction{
     public function add()
     {
         $email = Data::get('email',null,function($val)
+    {
+        if(empty($val))
         {
-            if(empty($val))
-            {
-                $this->msg(205,'抱歉,邮箱不能为空');
-            }
+            $this->msg(205,'抱歉,邮箱不能为空');
+        }
 
-            if($this->_userMo->findEmail($val))
-            {
-                $this->msg(205,'抱歉,邮箱已存在');
-            }
+        if($this->_userMo->findEmail($val))
+        {
+            $this->msg(205,'抱歉,邮箱已存在');
+        }
 
-            return $val;
-        });
+        return $val;
+    });
 
 
         $passwd = Data::get('passwd',null,function($val)

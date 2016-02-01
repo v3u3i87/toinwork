@@ -102,7 +102,7 @@ class WorksLogic{
             $tmp['design_id'] = $design_id;
             $tmp['template_id'] = $template_id;
             $tmp['tag'] = $val['key'];
-
+            //判断
             if($val['key'] === 'textarea'){
                 //多行文本
                 $tmp['doc'] = $val['val'];
