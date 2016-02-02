@@ -25,8 +25,8 @@ return array(
      */
 //    'alias'=>array('Info'=>'works\Package\Info'),
 
-
-    'is_session'=>false,
+    //开启 session
+    'is_session'=>true,
 
 
 
