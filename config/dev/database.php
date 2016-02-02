@@ -9,14 +9,14 @@
 return array(
 
     'db'=>array(
-        'type'=>'mysql',
+        'type'=>'pdo_mysql',
         'host'=>'127.0.0.1',
-        'user'=>'root',
-        'pass'=>'123456',
-        'name'=>'upadd',
+        'user'=>'tiw',
+        'pass'=>'maoqiang0801',
+        'name'=>'toinwork',
         'port'=>3306,
         'charset'=>'UTF8',
-        'prefix'=>'up_',
+        'prefix'=>'tiw_',
     )
 
 );
