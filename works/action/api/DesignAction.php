@@ -51,26 +51,35 @@ class DesignAction extends BaseAction{
             });
 
             //模板数据
-            $template = Data::get('template', null, function ($val) {
-                if (empty($val)) {
+            $template = Data::get('template', null, function ($val)
+            {
+                if (empty($val))
+                {
                     $this->msg(205, '抱歉,template不能为空');
                 }
 
-                if ($val = base64_decode($val)) {
-                    if ($val = json_decode($val, true)) {
-                        return $val;
-                    } else {
-                        $this->msg(205, '抱歉,template参数json格式错误');
+                $json = base64_decode($val);
+
+                if ($json)
+                {
+
+                    if ($data = json_decode($json, true))
+                    {
+                        return $data;
                     }
+
+                    $this->msg(205, '抱歉,template参数json格式错误');
                 } else {
                     $this->msg(205, '抱歉,template的数据不是base64');
                 }
             });
 
             $logic = DesignLogic::add($name, $template, $uid, $project_id);
-            if (is_array($logic)) {
+
+            if (is_array($logic))
+            {
                 $this->msg(205, 'template的数据不合法');
-            } elseif ($logic === true) {
+            } elseif ($logic === true){
                 $this->msg(200, '添加成功');
             } else {
                 $this->msg(206, '服务器繁忙,请稍等.');
@@ -100,7 +109,6 @@ class DesignAction extends BaseAction{
             );
             $design = Data::get('design_id',null,function($val) use ($projectData)
             {
-
                 if(empty($val))
                 {
                     $this->msg(205,'抱歉,design_id参数不能为空');
@@ -112,7 +120,6 @@ class DesignAction extends BaseAction{
                 }
                 $this->msg(205,'抱歉,该工作表格不存');
             });
-
 
             //合并数据 返回json
             if($data = array_merge($data,$design))

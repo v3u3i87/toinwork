@@ -41,19 +41,19 @@ class LoadAction extends BaseAction{
             return $val;
         });
 
-        $file = Data::get('file','abc',function($val) use ($key,$accInfo)
+        $file = Data::get('file',null,function($val) use ($key,$accInfo)
         {
             if(empty($val)){
                 $this->msg(205,'上传文件参数为file');
             }
-
-            if(isset($val['type'])){
+            //判断上传类型是否存在
+            if(array_key_exists('type',$val))
+            {
                 $path = 'data/upload/'.$key;
                 $upload = new Upload($val,6120,array('png','jpg','jpeg'),host().$path);
                 return $path.'/'.$upload->getpath();
-            }else{
-                $this->msg(205,'上传失败,数据异常');
             }
+            $this->msg(205,'上传失败,数据异常');
         });
 
         $this->msg(200,$file);

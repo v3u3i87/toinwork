@@ -19,7 +19,8 @@ class UserAccount extends BaseModel{
      * @return bool
      */
     public function addUser($email=null,$passwd=null,$uname=null,$mobile=null,$is_state=1){
-        if(empty($email) || empty($passwd)){
+        if(empty($email) || empty($passwd))
+        {
             return false;
         }
         $_data = array(

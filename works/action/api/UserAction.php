@@ -24,20 +24,19 @@ class UserAction extends BaseAction{
     public function add()
     {
         $email = Data::get('email',null,function($val)
-    {
-        if(empty($val))
         {
-            $this->msg(205,'抱歉,邮箱不能为空');
-        }
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,邮箱不能为空');
+            }
 
-        if($this->_userMo->findEmail($val))
-        {
-            $this->msg(205,'抱歉,邮箱已存在');
-        }
+            if($this->_userMo->findEmail($val))
+            {
+                $this->msg(205,'抱歉,邮箱已存在');
+            }
 
-        return $val;
-    });
-
+            return $val;
+        });
 
         $passwd = Data::get('passwd',null,function($val)
         {
@@ -68,6 +67,7 @@ class UserAction extends BaseAction{
         $uid = $this->_userMo->addUser($email,$passwd,$uname,$moblie);
         if($uid)
         {
+            UserInfo::add(array('uid'=>$uid,'create_time'=>time()));
             $this->msg(200,'新增用户成功',array('uid'=>$uid));
         }
         $this->msg(206,'新增失败');
@@ -131,7 +131,7 @@ class UserAction extends BaseAction{
         {
             if(empty($val))
             {
-                $this->msg(205,'抱歉,确认密码不能为空');
+                $this->msg(205,'抱歉,密码不能为空');
             }
             return $val;
         });
@@ -172,7 +172,8 @@ class UserAction extends BaseAction{
                 $this->msg(205,'抱歉,token不能为空');
             }
             $val = UserLogic::verifyTokenExpired($val);
-            if($val){
+            if($val)
+            {
                 return $val;
             }
             $this->msg(205,'过期或是不存在');
@@ -217,7 +218,7 @@ class UserAction extends BaseAction{
         //职务
         if($position = Data::get('position',false))
         {
-            $_data['position'] = $sex;
+            $_data['position'] = $position;
         }
 
         if(UserInfo::UserEdit($accInfo['uid'],$_data))
@@ -233,7 +234,8 @@ class UserAction extends BaseAction{
     /**
      * 昵称资料
      */
-    public function nickname(){
+    public function getInfo()
+    {
         $accInfo = Data::get('token',null,function($val)
         {
             if(empty($val))
@@ -241,7 +243,8 @@ class UserAction extends BaseAction{
                 $this->msg(205,'抱歉,token不能为空');
             }
             $val = UserLogic::verifyTokenExpired($val);
-            if($val){
+            if($val)
+            {
                 return $val;
             }
             $this->msg(205,'过期或是不存在');
@@ -250,7 +253,7 @@ class UserAction extends BaseAction{
         $info = UserInfo::where(array('uid'=>$accInfo['uid']))->find('position,sex,icon,nickname');
 
         if($info){
-            $this->msg(200,$info);
+            $this->msg(200,'ok',$info);
         }
 
         $this->msg(206,'没有任何资料');

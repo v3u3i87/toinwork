@@ -61,12 +61,7 @@ class UserInfo extends BaseModel{
         if(self::save($_data,array('uid'=>$uid)))
         {
             return true;
-
-        }else{
-            $_data['create_time'] = time();
-            return self::add($_data);
         }
-
         return false;
     }
 
