@@ -20,6 +20,7 @@ class MainAction extends BaseAction{
      */
     public function login()
     {
+        echo '随便看看';
         $this->view('login.html');
     }
 
