@@ -23,10 +23,18 @@ function dump($varVal, $isExit = false){
 /**
  * @param str $msg
  */
-function writeLog($msg)
+function writeLog($msg,$file='')
 {
     date_default_timezone_set("Asia/Shanghai");
-    file_put_contents('log.txt',"\r\n".date("h:i:sa").': '.$msg,FILE_APPEND|LOCK_EX);
+    if(empty($file))
+    {
+        $file = __DIR__.'/hook.log';
+    }
+    if (!file_exists ( $file ))  touch ( $file );
+    $info = "\r\n".date("h:i:sa").': '.$msg;
+    $fh = fopen ( $file, 'a+' );
+    fwrite ( $fh, $info);
+    fclose ( $fh );
 }
 
 /**
@@ -48,11 +56,11 @@ $descriptorspec = array(
     ) // stderr is a file to write to
 );
 
-if(array_key_exists('hook',$_POST)) {
+if(isset($_POST['hook'])) {
 
-    $postData = json_decode($_POST['hook']);
-
-    if ($postData['password'] !== 'password')
+    $postData = json_decode($_POST['hook'],true);
+    writeLog($_POST['hook'],'req_hook.log');
+    if ($postData['password'] !== '51161b4feb59771ce0aee9d454bebe13')
     {
         writeLog('un-authorization request:' . $_SERVER['HTTP_HOST']);
         die;
