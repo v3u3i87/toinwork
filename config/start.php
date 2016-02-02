@@ -4,7 +4,7 @@ return array(
 
     'environment'=>array(
         'local'=>array('RR-ZMQ','demo','Mac-zmq.local'),
-        'dev'=>array('renrentest','demo')
+        'dev'=>array('renrentest','demo','xcvu')
     ),
 
     'is_autoload'=>false,
