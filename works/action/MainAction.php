@@ -24,6 +24,8 @@ class MainAction extends BaseAction{
         echo '<br />';
         echo '你好,朋友..';
         echo '测试压压';
+        echo '<br />';
+        echo '在看看哈';
         $this->view('login.html');
     }
 
