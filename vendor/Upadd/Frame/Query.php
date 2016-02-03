@@ -5,8 +5,8 @@ use Upadd\Bin\Db\Db;
 use Upadd\Bin\Tool\Verify;
 use Upadd\Bin\Tool\Log;
 use Upadd\Bin\Tool\PageData;
-use Upadd\Bin\UpaddException;
 use Upadd\Frame\ProcessingSql;
+use Upadd\Bin\UpaddException;
 
 class Query extends ProcessingSql{
 
