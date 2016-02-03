@@ -45,7 +45,7 @@ class BaseAction extends Action{
             if($val){
                 return $val;
             }
-            $this->msg(205,'过期或是不存在');
+            $this->msg(208,'过期或是不存在');
         });
     }
 

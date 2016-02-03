@@ -5,7 +5,9 @@ namespace works\model;
 class Project extends \works\model\BaseModel{
 
     //设置数据库名称
-    public $_table = 'project';
+    protected $_table = 'project';
+
+    protected $_primaryKey = 'id';
 
 
     /**

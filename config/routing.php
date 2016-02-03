@@ -40,5 +40,24 @@ Routes::group(array('prefix' => '/api'),function() {
     //编辑工作
     Routes::get('/works/edit','works\action\api\worksAction@edit');
 
+
+    #####文档相关#####
+
+    //编辑菜单
+    Routes::get('/menu/user/edit','works\action\api\MenuAction@user_edit');
+    //菜单列表
+    Routes::get('/menu/user/list','works\action\api\MenuAction@user_list');
+
+    //获取文档列表
+    Routes::get('/docs/user/list','works\action\api\DocsAction@getUserList');
+    //获取文档内容
+    Routes::get('/docs/user/content','works\action\api\DocsAction@getUserContent');
+    //编辑文档
+    Routes::get('/docs/user/edit','works\action\api\DocsAction@userEdit');
+    //异步处理文档
+    Routes::get('/docs/user/asynchronous','works\action\api\DocsAction@asynchronous');
+
+
+
 });
 
