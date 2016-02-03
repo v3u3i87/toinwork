@@ -23,6 +23,7 @@ class MainAction extends BaseAction{
         echo '随便看看';
         echo '<br />';
         echo '你好,朋友..';
+        echo '测试压压';
         $this->view('login.html');
     }
 
