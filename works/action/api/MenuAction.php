@@ -79,12 +79,13 @@ class MenuAction extends BaseAction{
     public function asynchronous()
     {
         $acc = $this->is_token();
-        $_docs = new Docs();
-        $docs_id = $this->getDocsId();
+        $_menu = new Menu();
+        $menu_id = (int) Data::get('menu_id',0);
+
         switch (Data::get('key', null))
         {
             case 'del':
-                if($_docs->update(array('is_status'=>2),array('uid'=>$acc['uid'],'id'=>$docs_id)))
+                if($_menu->update(array('is_status'=>2),array('uid'=>$acc['uid'],'id'=>$menu_id)))
                 {
                     $this->msg(200,'删除成功');
                 }
@@ -95,6 +96,7 @@ class MenuAction extends BaseAction{
                 $this->msg(206,'您是异常的请求');
                 break;
         }
+
     }
 
 
