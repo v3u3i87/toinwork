@@ -2,6 +2,8 @@
 
 Routes::get('/', 'works\action\MainAction@login');
 
+Routes::get('/test', 'works\action\MainAction@test');
+
 //组
 Routes::group(array('prefix' => '/api'),function() {
 
@@ -47,6 +49,8 @@ Routes::group(array('prefix' => '/api'),function() {
     Routes::get('/menu/user/edit','works\action\api\MenuAction@user_edit');
     //菜单列表
     Routes::get('/menu/user/list','works\action\api\MenuAction@user_list');
+    //菜单异步处理
+    Routes::get('/menu/user/asynchronous','works\action\api\MenuAction@asynchronous');
 
     //获取文档列表
     Routes::get('/docs/user/list','works\action\api\DocsAction@getUserList');

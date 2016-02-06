@@ -149,22 +149,22 @@ class DocsAction extends BaseAction{
      */
     public function asynchronous()
     {
-        if($acc = $this->is_token())
+        $acc = $this->is_token();
+        $_docs = new Docs();
+        $docs_id = $this->getDocsId();
+        switch (Data::get('key', null))
         {
-            $_docs = new Docs();
-            $docs_id = $this->getDocsId();
-            switch (Data::get('key', null))
-            {
-                case 'del':
-                    if($_docs->update(array('is_status'=>2),array('uid'=>$acc['uid'],'id'=>$docs_id)))
-                    {
-                        $this->msg(200,'删除成功');
-                    }
-                    break;
-
-            }
+            case 'del':
+                if($_docs->update(array('is_status'=>2),array('uid'=>$acc['uid'],'id'=>$docs_id)))
+                {
+                    $this->msg(200,'删除成功');
+                }
+                break;
+            //直接返回请求异常
+            default:
+                $this->msg(206,'您是异常的请求');
+                break;
         }
-        $this->msg(206,'您是异常的请求');
     }
 
 

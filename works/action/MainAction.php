@@ -11,6 +11,7 @@
 namespace works\action;
 
 use Config;
+use Data;
 
 class MainAction extends BaseAction{
 
@@ -30,6 +31,17 @@ class MainAction extends BaseAction{
     }
 
 
+
+    public function test()
+    {
+        $keytitle = Data::get('in',null);
+        if($keytitle)
+        {
+            $key = base64_decode($keytitle);
+            p(json($key));
+        }
+        $this->view('test.html');
+    }
 
 
 
