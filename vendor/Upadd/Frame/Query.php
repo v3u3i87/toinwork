@@ -223,6 +223,25 @@ class Query extends ProcessingSql{
         return $this;
     }
 
+    /**
+     * 查询条数
+     * @param null $param in array,string
+     * @return $this
+     */
+    public function limit($param=null)
+    {
+        $tmp = 'LIMIT ';
+        if(is_array($param)){
+            $tmp.= lode(',',$param);
+
+        }elseif(is_string($param)){
+            $tmp.= $param;
+        }else{
+            throw new UpaddException('limit()参数错误');
+        }
+        $this->setLimit($tmp);
+        return $this;
+    }
 
     /**
      * 新增

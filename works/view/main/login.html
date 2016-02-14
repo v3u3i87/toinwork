@@ -1,9 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@val('name')</title>
+    @css('bootstrap.min.css')
+    @css('main.css')
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="login_main">
+
+                <div class="login_title">
+                    <h2>登陆</h2>
+                </div>
+
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" class="form-control email"  placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control passwd" placeholder="Password">
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-danger login_submit">登陆</button>
+                    <div class=""><a href="#">忘记密码?</a> </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+@js('bootstrap.min.js')
+
+<script>
+ $(function(){
+    $(".login_submit").click(function(){
+        var passwd = $(".passwd").val();
+        var email = $(".email").val();
+
+        console.log([email,passwd]);
+
+    });
+ });
+</script>
