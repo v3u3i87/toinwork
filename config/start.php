@@ -3,7 +3,7 @@
 return array(
 
     'environment'=>array(
-        'local'=>array('RR-ZMQ','demo','Mac-zmq.local'),
+        'local'=>array('RR-ZMQ','demo','Mac-zmq.local','PC-PC'),
         'dev'=>array('xcvu')
     ),
 
