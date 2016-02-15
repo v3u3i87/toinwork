@@ -3,37 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    @js('jquery-2.2.0.min.js')
-    @js('ku.js')
-    @js('core-min.js')
-    @js('enc-base64.js')
+
+    <script data-main="/resou/js/main.js" data-model="test" src="/resou/js/require.js"></script>
     <script id="setJson" type="text/html">[{"template_id":0,"work_design_id":0,"works_name":"很简单的一个文本","tag_id":1,"tag_data":"text","set_default":0,"relate_id":0,"sole":2,"sort":1},{"template_id":0,"work_design_id":0,"works_name":"多行文本测1212试","tag_id":2,"tag_data":"textarea","set_default":0,"relate_id":0,"sole":1,"sort":2},{"template_id":0,"work_design_id":0,"works_name":"数值类1212型","tag_id":4,"tag_data":"numerical","set_default":0,"relate_id":0,"sole":1,"sort":3}]</script>
 </head>
 <body>
 
 </body>
-    <script>
-        $(function(){
-            var info = $("#setJson").text();
-            //加密
-            var str = CryptoJS.enc.Utf8.parse(info);
-            var base64 = CryptoJS.enc.Base64.stringify(str);
-//            console.log(base64);
 
-            //解密
-            var words = CryptoJS.enc.Base64.parse(base64);
-            try {
-                var dn = words.toString(CryptoJS.enc.Utf8);
-                console.log(dn);
-                console.log(ku.json(dn));
-            } catch (e) {
-                alert('格式有误');
-            }
-
-            var req = ku._post('/test',{'in':base64},'post');
-            console.log(req);
-        });
-
-
-    </script>
 </html>

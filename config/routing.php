@@ -2,6 +2,9 @@
 
 Routes::get('/', 'works\action\MainAction@login');
 
+Routes::get('/test', 'works\action\MainAction@test');
+
+
 //web端
 Routes::group(array('prefix'=>'/main'),function(){
 
@@ -18,7 +21,6 @@ Routes::group(array('prefix'=>'/main'),function(){
     //详情
     Routes::get('/works/show','works\action\WorksAction@show');
 
-
     ###文档
 
     //文档列表 /main/docs
@@ -29,7 +31,6 @@ Routes::group(array('prefix'=>'/main'),function(){
 
 });
 
-//Routes::get('/test', 'works\action\MainAction@test');
 
 //API
 Routes::group(array('prefix' => '/api'),function() {

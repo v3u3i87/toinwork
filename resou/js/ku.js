@@ -1,7 +1,7 @@
-var ku = {
+define(function () {
 
     //异步ajax
-     _post : function (_url, postData, _type) {
+     var post = function (_url, postData, _type) {
         var info = $.ajax({
             type: _type,
             url: _url,
@@ -11,10 +11,10 @@ var ku = {
         }).responseText;
          //console.log(info);
         if (info) return JSON.parse(info);
-    },
+    };
 
     //验证邮箱
-    emailCheck : function (_this, _val)
+    var emailCheck = function (_this, _val)
     {
         var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
         if (_this && _val)
@@ -27,20 +27,20 @@ var ku = {
             }
             return true;
         }
-    },
+    };
 
     //判断是否为空
-    is_null : function (value)
+    var is_null = function (value)
     {
         if (value !== null || value !== undefined || value !== '')
         {
             return true;
         }
         return false;
-    },
+    };
 
     //判断是否有值
-    is_focus : function (_this, _val, _info)
+    var is_focus =  function (_this, _val, _info)
     {
         if (_val == null || _val == undefined || _val == '')
         {
@@ -49,10 +49,10 @@ var ku = {
             return false;
         }
         return true;
-    },
+    };
 
     //执行转义
-    json : function (jsonVal)
+    var json = function (jsonVal)
      {
          if (this.is_null(jsonVal)) {
              switch (typeof(jsonVal)) {
@@ -70,10 +70,10 @@ var ku = {
          }else{
              return false;
          }
-    },
+    };
 
     //设置临时值
-     setVal : function (name, json)
+     var setVal = function (name, json)
      {
 
         if (!this.is_null(name))
@@ -88,12 +88,24 @@ var ku = {
             return;
         }
         $.cookie(name, json, {expires: 1});
-    },
+    };
 
     //获取值
-     getVal :function (key)
+     var getVal = function (key)
     {
         return $.cookie(key);
-    },
+    };
 
-}
+    //返回对象
+    return {
+        emailCheck: emailCheck,
+        is_focus: is_focus,
+        is_null: is_null,
+        json: json,
+        post: post,
+        setVal: setVal,
+        getVal: getVal
+    }
+
+
+});
