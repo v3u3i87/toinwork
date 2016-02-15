@@ -4,7 +4,7 @@ require.config(
         paths: {
             'jquery': '../lib/jquery-2.2.0.min',
             'bootstrap': '../lib/bootstrap/js/bootstrap',
-            //加密库
+            //加密库 base64
             'CryptoJS' : '../lib/CryptoJS/components/core-min',
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
             'ku': 'ku',
