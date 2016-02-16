@@ -19,6 +19,8 @@ class DocsAction extends BaseAction{
             $where['uid'] = $acc['uid'];
             $where['is_status'] = 1;
             $list = array();
+            //临时查询的字段
+            $tmpField = "id AS docs_id,menu_id,title,content,share,update_time,create_time";
             if($menu_id)
             {
                 //查询是否该会员的
@@ -29,7 +31,7 @@ class DocsAction extends BaseAction{
                 }
                 $tmp = $where;
                 $tmp['menu_id'] = $menu_id;
-                $list = Docs::where($tmp)->page()->sort('id')->get();
+                $list = Docs::where($tmp)->page()->sort('id')->get($tmpField);
                 if(empty($list))
                 {
                     $menuList = Menu::where(array('fid'=>$menu_id,'type'=>1,'uid'=>$acc['uid']))->get('id');
@@ -39,11 +41,11 @@ class DocsAction extends BaseAction{
                         {
                             $menuListTmp[] = $v['id'];
                         }
-                        $list = Docs::where($where)->in_where('menu_id',$menuListTmp)->page()->sort('id')->get();
+                        $list = Docs::where($where)->in_where('menu_id',$menuListTmp)->page()->sort('id')->get($tmpField);
                     }
                 }
             }else{
-                $list = Docs::where($where)->page()->sort('id')->get();
+                $list = Docs::where($where)->page()->sort('id')->get($tmpField);
             }
 
             if($list)
@@ -87,10 +89,9 @@ class DocsAction extends BaseAction{
             }else{
                 $data['type'] = 1;
                 $data['uid'] = $acc['uid'];
-                $data['create_time'] = time();
-                $data['public_share'] = 2;
-                $data['internal_share'] = 2;
+                $data['share'] = 2;
                 $data['is_status'] = 1;
+                $data['create_time'] = time();
                 $up = Docs::add($data);
             }
 
@@ -109,7 +110,7 @@ class DocsAction extends BaseAction{
         if($acc = $this->is_token())
         {
             $docs_id = $this->getDocsId();
-            $content = Docs::where(array('id'=>$docs_id,'uid'=>$acc['uid'],'type'=>1,'is_status'=>1))->find();
+            $content = Docs::where(array('id'=>$docs_id,'uid'=>$acc['uid'],'type'=>1,'is_status'=>1))->find('id AS docs_id,menu_id,title,content,share,update_time,create_time');
             if($content)
             {
                 $this->msg(200,'ok',$content);
@@ -120,9 +121,15 @@ class DocsAction extends BaseAction{
     }
 
     //公共分享内容
-    public function getPublicContent()
+    public function getShareContent()
     {
-
+        $docs_id = $this->getDocsId();
+        $content = Docs::where(array('id'=>$docs_id,'share'=>1,'type'=>1,'is_status'=>1))->find('title,content,update_time,create_time');
+        if($content)
+        {
+            $this->msg(200,'ok',$content);
+        }
+        $this->msg(201,'not data');
     }
 
 
@@ -154,12 +161,35 @@ class DocsAction extends BaseAction{
         $docs_id = $this->getDocsId();
         switch (Data::get('key', null))
         {
+            //删除
             case 'del':
                 if($_docs->update(array('is_status'=>2),array('uid'=>$acc['uid'],'id'=>$docs_id)))
                 {
                     $this->msg(200,'删除成功');
                 }
                 break;
+
+            //是否分享
+            case 'share':
+                $status = (int) Data::get('status',null,function($val)
+                {
+                    if(empty($val))
+                    {
+                        $this->msg('205','抱歉,如果是分享类型,状态必须带上');
+                    }
+
+                    if($val !=1 || $val !=2)
+                    {
+                        $this->msg('205','您的状态值非法');
+                    }
+                });
+
+                if($_docs->update(array('share'=>$status),array('uid'=>$acc['uid'],'id'=>$docs_id)))
+                {
+                    $this->msg(200,'状态更新成功');
+                }
+            break;
+
             //直接返回请求异常
             default:
                 $this->msg(206,'您是异常的请求');

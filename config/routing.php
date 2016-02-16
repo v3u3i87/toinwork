@@ -58,7 +58,7 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     //项目列表
     Routes::get('/project/list','works\action\api\ProjectAction@getUserList');
 
-    //编辑项目
+    //项目编辑
     Routes::get('/project/edit','works\action\api\ProjectAction@edit');
 
     ///////设计工作相关
@@ -70,7 +70,7 @@ Routes::group(array('prefix' => '/api/v1'),function() {
 
     ///工作区相关
 
-    //编辑工作
+    //工作编辑
     Routes::get('/works/edit','works\action\api\worksAction@edit');
 
 
@@ -89,6 +89,10 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     Routes::get('/docs/user/content','works\action\api\DocsAction@getUserContent');
     //编辑文档
     Routes::get('/docs/user/edit','works\action\api\DocsAction@userEdit');
+
+    //分享文档
+    Routes::get('/docs/share','works\action\api\DocsAction@getShareContent');
+
     //异步处理文档
     Routes::get('/docs/user/asynchronous','works\action\api\DocsAction@asynchronous');
 
