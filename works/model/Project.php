@@ -38,5 +38,15 @@ class Project extends \works\model\BaseModel{
     }
 
 
+    /**
+     * 根据ID获取项目列表
+     * @param array $project
+     * @return mixed
+     */
+    public static function byIdInList($project=array())
+    {
+        return self::where(array('type'=>2,'is_status'=>1))->in_where('id',lode(',',$project))->sort('id')->get('id as project_id,name,info,icon,create_time');
+    }
+
 
 }

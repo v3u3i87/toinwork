@@ -37,5 +37,29 @@ class ProjectLogic{
     }
 
 
+    /**
+     * 根据会员ID查询项目列表
+     * @param null $uid
+     * @return bool| array
+     */
+    public static function getUserList($uid=null)
+    {
+        if($uid)
+        {
+            $project_idList = ProjectUser::byUserList($uid);
+            if($project_idList)
+            {
+                $data = [];
+                foreach($project_idList as $k=>$v)
+                {
+                    $data[] = $v['project_id'];
+                }
+                return Project::byIdInList($data);
+            }
+        }
+        return false;
+    }
+
+
 
 }

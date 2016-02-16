@@ -33,7 +33,7 @@ Routes::group(array('prefix'=>'/main'),function(){
 
 
 //API
-Routes::group(array('prefix' => '/api'),function() {
+Routes::group(array('prefix' => '/api/v1'),function() {
 
     //上传图片
     Routes::get('/load','works\action\api\LoadAction@main');
@@ -54,6 +54,9 @@ Routes::group(array('prefix' => '/api'),function() {
     Routes::get('/tag/sys/field','works\action\api\TagAction@sysWorksList');
 
     ///////项目相关
+
+    //项目列表
+    Routes::get('/project/list','works\action\api\ProjectAction@getUserList');
 
     //编辑项目
     Routes::get('/project/edit','works\action\api\ProjectAction@edit');

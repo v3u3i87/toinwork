@@ -5,8 +5,9 @@ namespace works\model;
 class ProjectUser extends \works\model\BaseModel{
 
     //设置数据库名称
-    public $_table = 'project_user';
+    protected $_table = 'project_user';
 
+    protected $_primaryKey = 'id';
 
     /**
      * 新增数据
@@ -28,6 +29,15 @@ class ProjectUser extends \works\model\BaseModel{
         return false;
     }
 
+    /**
+     * 根据会员获取项目
+     * @param null $uid
+     * @return mixed || array
+     */
+    public static function byUserList($uid=null)
+    {
+        return self::where(array('uid'=>$uid,'is_status'=>1))->get(array('project_id'));
+    }
 
 
 

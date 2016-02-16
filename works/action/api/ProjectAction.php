@@ -3,6 +3,7 @@ namespace works\action\api;
 
 use Data;
 use works\action\BaseAction;
+use works\logic\ProjectLogic;
 use works\logic\UserLogic;
 use works\model\Project;
 use works\model\ProjectUser;
@@ -37,8 +38,8 @@ class ProjectAction extends BaseAction{
                     }
                     return $val;
                 }),
-                'info'=>Data::get('info',false),
-                'icon'=>Data::get('icon',false)
+                'info'=>Data::get('info',null),
+                'icon'=>Data::get('icon',null)
             );
 
             $_data = array_filter($_data);
@@ -61,6 +62,20 @@ class ProjectAction extends BaseAction{
     }
 
 
+    /**
+     * 根据会员获取项目列表
+     */
+    public function getUserList()
+    {
+        $acc = $this->is_token();
+        if($list = ProjectLogic::getUserList($acc['uid']))
+        {
+            $this->msg(200,'ok',$list);
+        }
+        $this->msg(200,'not data');
+    }
+
+    
 
 
 

@@ -68,7 +68,8 @@ class UserLogic{
                 //获取时间公式
                 $byDay = strtotime(date('Y-m-d', strtotime("+{$day} day")));
                 //时间未超过
-                if ($access_time <= $byDay) {
+                if ($access_time <= $byDay)
+                {
                     return $accInfo;
                 }
             }
