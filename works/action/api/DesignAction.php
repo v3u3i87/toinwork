@@ -160,4 +160,37 @@ class DesignAction extends BaseAction{
     }
 
 
+    /**
+     * 异步
+     */
+    public function asynchronous()
+    {
+        $acc = $this->is_token();
+        $design_id = (int) Data::get('design_id',null,function($val)
+        {
+            if(empty($val))
+            {
+                $this->msg(205,'抱歉,design_id参数不能为空');
+            }
+            return $val;
+        });
+
+        $key = Data::get('key',null);
+        switch($key)
+        {
+
+            case 'name':
+
+                    //DesignLogic
+
+                break;
+
+            //直接返回请求异常
+            default:
+                $this->msg(206,'您是异常的请求');
+                break;
+
+        }
+    }
+
 }
