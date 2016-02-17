@@ -10,7 +10,14 @@
 
 namespace works\logic;
 
+use works\model\UserAccount;
 
-class WorksTemplateLogic{
+use works\model\Tag;
+use works\model\WorkDesign;
+use works\model\WorkTemplate;
+class TemplateLogic
+{
+
+
 
 }

@@ -53,15 +53,17 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     //标签工作字段
     Routes::get('/tag/sys/field','works\action\api\TagAction@sysWorksList');
 
-    ///////项目相关
+    ####项目相关
 
     //项目列表
     Routes::get('/project/list','works\action\api\ProjectAction@getUserList');
-
     //项目编辑
     Routes::get('/project/edit','works\action\api\ProjectAction@edit');
 
     ///////设计工作相关
+
+    //设计列表
+    Routes::get('/design/list','works\action\api\DesignAction@getUserProjectList');
 
     //新增设计工作
     Routes::get('/design/add','works\action\api\DesignAction@add');
@@ -89,14 +91,10 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     Routes::get('/docs/user/content','works\action\api\DocsAction@getUserContent');
     //编辑文档
     Routes::get('/docs/user/edit','works\action\api\DocsAction@userEdit');
-
     //分享文档
     Routes::get('/docs/share','works\action\api\DocsAction@getShareContent');
-
     //异步处理文档
     Routes::get('/docs/user/asynchronous','works\action\api\DocsAction@asynchronous');
-
-
 
 });
 

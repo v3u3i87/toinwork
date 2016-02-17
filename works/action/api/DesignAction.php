@@ -13,6 +13,9 @@ use works\logic\ProjectLogic;
 class DesignAction extends BaseAction{
 
 
+    /**
+     * 设计工作-编辑
+     */
     public function add()
     {
         if($accInfo = $this->is_token())
@@ -21,29 +24,36 @@ class DesignAction extends BaseAction{
             $uid = $accInfo['uid'];
 
             //工作名称
-            $name = Data::get('name', null, function ($val) {
-                if (empty($val)) {
+            $name = Data::get('name', null, function ($val)
+            {
+                if (empty($val))
+                {
                     $this->msg(205, '抱歉,name值不能为空');
                 }
                 return $val;
             });
 
             //项目ID
-            $project_id = (int)Data::get('project_id', 0, function ($val) use ($uid) {
-                if (empty($val)) {
+            $project_id = (int) Data::get('project_id', 0, function ($val) use ($uid)
+            {
+                if (empty($val))
+                {
                     $this->msg(205, '抱歉,project_id参数不能为空');
                 }
 
-                if (!Project::where(array('id' => $val))->find()) {
+                if (!Project::where(array('id' => $val))->find())
+                {
                     $this->msg(205, '抱歉,您的上级项目不存在');
                 }
 
                 //判断是否为项目创建人
-                if (!Project::where(array('id' => $val, 'uid' => $uid))->find()) {
+                if (!Project::where(array('id' => $val, 'uid' => $uid))->find())
+                {
                     /**
                      * 判断项目成员是否存在
                      */
-                    if (!ProjectUser::where(array('project_id' => $val, 'uid' => $uid))->find()) {
+                    if (!ProjectUser::where(array('project_id' => $val, 'uid' => $uid))->find())
+                    {
                         $this->msg(205, '严重警告,请勿非法提交数据');
                     }
                 }
@@ -133,6 +143,21 @@ class DesignAction extends BaseAction{
 
     }
 
+    /**
+     * 根据会员
+     */
+    public function getUserProjectList()
+    {
+        $acc = $this->is_token();
+        //获取项目资料
+        $projectData = $this->is_user_get_project($acc['uid']);
+        $data = DesignLogic::findProject_idList($projectData['id']);
+        if($data)
+        {
+            $this->msg(200,'ok',$data);
+        }
+        $this->msg(201,'not data');
+    }
 
 
 }

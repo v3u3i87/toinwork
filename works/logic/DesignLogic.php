@@ -11,74 +11,76 @@ use works\model\WorkTemplate;
 class DesignLogic{
 
 
+    /**
+     * 编辑设计工作
+     * @param $name
+     * @param $template
+     * @param $uid
+     * @param $project_id
+     * @return array|bool
+     */
     public static function add($name,$template,$uid,$project_id)
     {
         //数据验证
         $is_tag = self::getTagCheckList();
         $templateNum = count($template);
-        if($templateNum > 0 )
+        if($templateNum < 1 )
         {
-            //验证数据
-            $is_check_edit = self::is_check_edit($template,$is_tag);
-            if($is_check_edit === true)
-            {
-               $WorkDesignModel = new WorkDesign();
-                //开启事务
-                $WorkDesignModel->begin();
-                $_workdesignData['type'] = 2;
-                $_workdesignData['name'] = $name;
-                $_workdesignData['uid'] = $uid;
-                $_workdesignData['project_id'] = $project_id;
-                $_workdesignData['is_status'] = 1;
-                $_workdesignData['update_time'] = time();
-                $_workdesignData['create_time'] = time();
-                //新增数据
-                $_workdesignID = $WorkDesignModel->add($_workdesignData);
-                if($_workdesignID)
-                {
-                    $tmpNum = 0;
-                    $WorkTemplateModel = new WorkTemplate();
-                    $WorkTemplateData = array();
-                    foreach($template as $k=>$v)
-                    {
-                        unset($v['template_id']);
-                        $v['work_design_id'] = $_workdesignID;
-                        $v['is_status'] = 1;
-                        $v['update_time'] = time();
-                        $v['create_time'] = time();
-                        $WorkTemplateData[] = $v;
-                    }
+            return false;
+        }
+        //验证数据
+        $is_check_edit = self::is_check_edit($template,$is_tag);
+        if($is_check_edit === false)
+        {
+            return $is_check_edit;
+        }
 
-                    foreach($WorkTemplateData as $k=>$v)
-                    {
+        $designModel = new WorkDesign();
+        //开启事务
+        $designModel->begin();
+        $_designData = [];
+//        p($template);
+        //新增
+        $_designData['type'] = 2;
+        $_designData['name'] = $name;
+        $_designData['uid'] = $uid;
+        $_designData['project_id'] = $project_id;
+        $_designData['is_status'] = 1;
+        $_designData['update_time'] = time();
+        $_designData['create_time'] = time();
+        $_workdesignID = $designModel->add($_designData);
+        //如果添加失败,回顾事务
+        if(!$_workdesignID)
+        {
+            return $designModel->rollback();
+        }
 
-                        if($WorkTemplateModel->add($v))
-                        {
-                            $tmpNum+=1;
-                        }
-                    }
-                    //判断执行是否对等
-                    if($templateNum===$tmpNum){
-                        $WorkDesignModel->commit();
-                        return true;
-                    }else{
-                        $WorkDesignModel->rollback();
-                        return false;
-                    }
-                }else{
-                    $WorkDesignModel->rollback();
-                    return false;
-                }
+        $tmpNum = 0;
+        $templateModel = new WorkTemplate();
+        $_templateData = array();
 
-            }else{
-                //返回验证失败的状态码
-                return $is_check_edit;
-            }
+        foreach($template as $k=>$v)
+        {
+            $v['work_design_id'] = $_workdesignID;
+            $v['is_status'] = 1;
+            $v['update_time'] = time();
+            $v['create_time'] = time();
+            $_templateData[] = $v;
+        }
 
+        $tmpNum = count($templateModel->addAll($_templateData));
 
+        //判断执行是否对等
+        if($templateNum === $tmpNum)
+        {
+            return $designModel->commit();
+        }else{
+
+            return $designModel->rollback();
         }
 
     }
+
 
 
     /**
@@ -104,10 +106,13 @@ class DesignLogic{
      * @param $list
      * @return bool
      */
-    private static function is_tag_data($data,$list){
+    private static function is_tag_data($data,$list)
+    {
         if($data && $list){
-            foreach($list as $k=>$v){
-                if($v['id']==$data['tag_id'] && $v['data']==$data['tag_data']){
+            foreach($list as $k=>$v)
+            {
+                if($v['id']==$data['tag_id'] && $v['data']==$data['tag_data'])
+                {
                     return true;
                 }
             }
@@ -140,6 +145,7 @@ class DesignLogic{
 
             //判断一致性
             $is_tag_data  = self::is_tag_data($v,$tag['list']);
+
             if($is_tag_data === false)
             {
                 return array('code'=>3);
@@ -175,6 +181,19 @@ class DesignLogic{
         }
         return false;
 
+    }
+
+    /**
+     * 根据项目ID查询
+     * @param $project_id
+     */
+    public static function findProject_idList($project_id=null)
+    {
+        if($project_id)
+        {
+            return WorkDesign::where(array('project_id'=>$project_id,'is_status'=>1,'type'=>2))->sort('id')->get('id AS design_id,project_id,name,icon,update_time,create_time');
+        }
+        return false;
     }
 
 
