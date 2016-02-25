@@ -16,7 +16,7 @@ class DesignAction extends BaseAction{
     /**
      * 设计工作-编辑
      */
-    public function add()
+    public function edit()
     {
         if($accInfo = $this->is_token())
         {
@@ -60,6 +60,19 @@ class DesignAction extends BaseAction{
                 return $val;
             });
 
+            //获取设计ID
+            $design_id = Data::get('design_id',0,function($val) use($uid,$project_id)
+            {
+                if(!empty($val))
+                {
+                    if(!DesignLogic::findIdUidProject_id($val,$uid,$project_id))
+                    {
+                        $this->msg(205,'抱歉,您的设计工作ID不合法.');
+                    }
+                }
+                return $val;
+            });
+
             //模板数据
             $template = Data::get('template', null, function ($val)
             {
@@ -84,13 +97,13 @@ class DesignAction extends BaseAction{
                 }
             });
 
-            $logic = DesignLogic::add($name, $template, $uid, $project_id);
+            $logic = DesignLogic::edit($name, $template, $uid, $project_id,$design_id);
 
             if (is_array($logic))
             {
                 $this->msg(205, 'template的数据不合法');
             } elseif ($logic === true){
-                $this->msg(200, '添加成功');
+                $this->msg(200, '编辑成功');
             } else {
                 $this->msg(206, '服务器繁忙,请稍等.');
             }
@@ -143,8 +156,9 @@ class DesignAction extends BaseAction{
 
     }
 
+
     /**
-     * 根据会员
+     * 根据会员显示列表
      */
     public function getUserProjectList()
     {

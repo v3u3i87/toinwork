@@ -8,4 +8,6 @@ class WorkTemplate extends \works\model\BaseModel{
 
     protected $_primaryKey = 'id';
 
+
+
 }

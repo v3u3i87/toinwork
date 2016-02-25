@@ -66,7 +66,7 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     Routes::get('/design/list','works\action\api\DesignAction@getUserProjectList');
 
     //新增设计工作
-    Routes::get('/design/add','works\action\api\DesignAction@add');
+    Routes::get('/design/edit','works\action\api\DesignAction@edit');
     //获取设计结构
     Routes::get('/design/get/table','works\action\api\DesignAction@table');
 

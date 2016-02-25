@@ -15,7 +15,8 @@ class LoadAction extends BaseAction{
     /**
      * 上传主函数
      */
-    public function main(){
+    public function main()
+    {
         $accInfo = Data::get('token',null,function($val)
         {
             if(empty($val))
@@ -23,7 +24,8 @@ class LoadAction extends BaseAction{
                 $this->msg(205,'抱歉,token不能为空');
             }
             $val = UserLogic::verifyTokenExpired($val);
-            if($val){
+            if($val)
+            {
                 return $val;
             }
             $this->msg(205,'过期或是不存在');
@@ -31,7 +33,8 @@ class LoadAction extends BaseAction{
 
         $key = Data::get('key',null,function($val)
         {
-            if(empty($val)){
+            if(empty($val))
+            {
                 $this->msg(205,'缺少key参数');
             }
             if(!in_array($val,Config::get('tag@load_type')))
@@ -43,7 +46,8 @@ class LoadAction extends BaseAction{
 
         $file = Data::get('file',null,function($val) use ($key,$accInfo)
         {
-            if(empty($val)){
+            if(empty($val))
+            {
                 $this->msg(205,'上传文件参数为file');
             }
             //判断上传类型是否存在
