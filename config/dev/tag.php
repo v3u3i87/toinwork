@@ -36,5 +36,7 @@ return array(
 
     ),
 
+    'client_type'=>['web','h5','ios','android','api'],
+
 
 );

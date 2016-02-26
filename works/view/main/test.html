@@ -5,15 +5,31 @@
     <title>Title</title>
 
     @public_css('/resou/lib/bootstrap/css/bootstrap.css')
-    <!--<script id="setJson" type="text/json">[{"template_id":0,"work_design_id":0,"works_name":"名称","tag_id":1,"tag_data":"text","set_default":"无","relate_id":0,"sole":2,"sort":1,"is_table_show":1},{"template_id":0,"work_design_id":0,"works_name":"电话","tag_id":1,"tag_data":"text","set_default":"无","relate_id":0,"sole":1,"sort":2,"is_table_show":1},{"template_id":0,"work_design_id":0,"works_name":"地址","tag_id":1,"tag_data":"text","set_default":"","relate_id":0,"sole":1,"sort":3,"is_table_show":1},{"template_id":0,"work_design_id":0,"works_name":"联系人","tag_id":1,"tag_data":"text","set_default":"","relate_id":0,"sole":1,"sort":4,"is_table_show":1}]</script>-->
-    <!--<script id="setJson" type="text/html">-->
-        <!--&lt;!&ndash;[{"template_id":0,"work_design_id":0,"works_name":"文本测试1212","tag_id":1,"tag_data":"text","set_default":"无","relate_id":0,"sole":2,"sort":1,"is_table_show":1},{"template_id":0,"work_design_id":0,"works_name":"多文本测试111","tag_id":2,"tag_data":"textarea","set_default":"无","relate_id":0,"sole":1,"sort":2,"is_table_show":1},{"template_id":0,"work_design_id":0,"works_name":"数值测试121212","tag_id":4,"tag_data":"numerical","set_default":"无","relate_id":0,"sole":1,"sort":3,"is_table_show":1}]&ndash;&gt;-->
-    <!--</script>-->
-    <script id="setJson" type="application/json">
-        [{"work_template_id":40,"works_name":"姓名信息","tag_id":1,"tag_data":"text","set_default":"无","relate_id":0,"sole":2,"sort":1,"is_table_show":1},{"work_template_id":41,"works_name":"电话/手机/信息","tag_id":1,"tag_data":"text","set_default":"无","relate_id":0,"sole":1,"sort":2,"is_table_show":1},{"work_template_id":42,"works_name":"地址/住宅/email","tag_id":1,"tag_data":"text","set_default":"","relate_id":0,"sole":1,"sort":3,"is_table_show":1},{"work_template_id":43,"works_name":"星座/生肖","tag_id":1,"tag_data":"text","set_default":"","relate_id":0,"sole":1,"sort":4,"is_table_show":1}]
-    </script>
+    <style>
+        *{ margin: 0; padding: 0;}
+        .main{ margin: 100px; }
+        .setInfo{width: 500px; height: 200px; padding: 10px; border:silver 1px double;}
+
+        /*.main div.lef*/
+    </style>
 </head>
 <body>
+    <div class="main">
+
+        <div class="left">
+            <p>待加密数据</p>
+            <textarea class="setInfo setData "></textarea>
+            <p> <button class="setEnc">加密</button></p>
+        </div>
+
+        <div class="right">
+            <p>加密数据</p>
+            <textarea class="setInfo getData"></textarea>
+        </div>
+
+    </div>
+
+
 
 </body>
 </html>

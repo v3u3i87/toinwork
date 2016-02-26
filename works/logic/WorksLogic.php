@@ -5,6 +5,7 @@ namespace works\logic;
 use works\model\Works;
 use works\model\WorksInfo;
 use works\model\Tag;
+use works\model\WorkTemplate;
 
 class WorksLogic{
 
@@ -23,11 +24,6 @@ class WorksLogic{
                 return false;
             }
             if(!isset($data['design_id']))
-            {
-                return false;
-            }
-
-            if(!isset($data['template_id']))
             {
                 return false;
             }
@@ -67,15 +63,21 @@ class WorksLogic{
     }
 
 
+    /**
+     * 处理数据
+     * @param $data
+     * @param $uid
+     * @return bool
+     */
     public static function process_data($data,$uid)
     {
 
         $works_id = $data['works_id'];
         $design_id = $data['design_id'];
-        $template_id = $data['template_id'];
         $getPush = $data['push'];
         $worksInfo = new WorksInfo();
         $worksInfo->begin();
+
         if(empty($works_id))
         {
             $works_id = Works::add(array(
@@ -89,8 +91,8 @@ class WorksLogic{
 
 
         //works确认创建失败
-        if(empty($works_id)){
-            $worksInfo->rollback();
+        if(empty($works_id) && $worksInfo->rollback())
+        {
             return false;
         }
 
@@ -99,8 +101,10 @@ class WorksLogic{
         {
             $tmp = [];
             $tmp['works_id'] = $works_id;
+            //设计ID
             $tmp['design_id'] = $design_id;
-            $tmp['template_id'] = $template_id;
+            //工作模板
+            $tmp['template_id'] = $val['template_id'];
             $tmp['tag'] = $val['key'];
             //判断
             if($val['key'] === 'textarea'){
@@ -124,16 +128,104 @@ class WorksLogic{
                 $bool = $worksInfo->save($tmp,array('id'=>$val['works_info_id']));
             }
 
-            if(!$bool)
+            if(!$bool && $worksInfo->rollback())
             {
-                $worksInfo->rollback();
                 return false;
             }
+
         }
 
-        $worksInfo->commit();
-        return true;
+        if($worksInfo->commit())
+        {
+            return true;
+        }
+
+        return false;
     }
+
+
+
+    public static function get_design_id_list($design_id=null)
+    {
+        $list = Works::get_is_list_ok($design_id);
+        $so = [];
+        //遍历查询ID
+        foreach($list['data'] as $k=>$v)
+        {
+            $so[] = $v['id'];
+        }
+
+        $data = WorksInfo::get_in_works_id_list($so);
+
+        if($data)
+        {
+            $tmp = self::set_tag_val($data,$so);
+            $templateSo = [];
+            for($i=0;$i <=count($so);$i++)
+            {
+                $worksId = 'worksId_'.$so[$i];
+                $worksInfo = $tmp[$worksId];
+                foreach($worksInfo as $k=>$v)
+                {
+                    $templateSo[] = $v['template_id'];
+                }
+                //获取模板排序数据
+                $templateData = WorkTemplate::in_where('id',$templateSo)->sort('sort',false)->get();
+                p($templateData);
+
+
+            }
+
+        }
+
+        return false;
+    }
+
+    /**
+     * 设置标签数据
+     * @param array $data
+     * @return array
+     */
+    public static function set_tag_val($data=[],$so=[])
+    {
+
+        $setData = [];
+        if(!empty($data))
+        {
+            foreach($so as $k=>$v)
+            {
+                $tmp = [];
+                //归类
+                foreach($data as $key=>$val)
+                {
+                    if($val['works_id'] == $v)
+                    {
+                        $tmp['works_info_id'] = $val['id'];
+                        $tmp['template_id'] = $val['template_id'];
+                        $tmp['tag'] = $val['tag'];
+                        //判断k
+                        if($val['tag'] === 'textarea')
+                        {
+                            //多行文本
+                            $tmp['val'] = $val['textarea'];
+                        }elseif($val['tag'] === 'editor'){
+                            //编辑器
+                            $tmp['val'] = $val['editor'];
+                        }else{
+                            //普通数据
+                            $tmp['val'] = $val['val'];
+                        }
+                        $setData['worksId_'.$v][] = $tmp;
+                    }
+
+                }
+            }
+
+        }
+        return $setData;
+    }
+
+
 
 
 

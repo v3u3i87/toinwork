@@ -74,4 +74,28 @@ class BaseAction extends Action{
         });
     }
 
+
+    /**
+     * 获取客户端类型
+     * @return mixed
+     */
+    public function getClientType()
+    {
+        return Data::get('client',null,function($val)
+        {
+              if(empty($val))
+              {
+                  $this->msg(205,'client not null.');
+              }
+
+              if(!in_array($val,Config::get('tag@client_type')))
+              {
+                  $this->msg(205,'The client type error.');
+              }
+            return $val;
+        });
+    }
+
+
+
 }

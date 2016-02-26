@@ -4,6 +4,8 @@ Routes::get('/', 'works\action\MainAction@login');
 
 Routes::get('/test', 'works\action\MainAction@test');
 
+//升级
+Routes::get('/upgrade','works\action\api\UpgradeAction@main');
 
 //web端
 Routes::group(array('prefix'=>'/main'),function(){
@@ -31,9 +33,9 @@ Routes::group(array('prefix'=>'/main'),function(){
 
 });
 
-
 //API
 Routes::group(array('prefix' => '/api/v1'),function() {
+
 
     //上传图片
     Routes::get('/load','works\action\api\LoadAction@main');
@@ -53,30 +55,32 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     //标签工作字段
     Routes::get('/tag/sys/field','works\action\api\TagAction@sysWorksList');
 
-    ####项目相关
+    #项目相关
 
     //项目列表
     Routes::get('/project/list','works\action\api\ProjectAction@getUserList');
     //项目编辑
     Routes::get('/project/edit','works\action\api\ProjectAction@edit');
 
-    ///////设计工作相关
-
-    //设计列表
-    Routes::get('/design/list','works\action\api\DesignAction@getUserProjectList');
+    #设计工作相关
 
     //新增设计工作
     Routes::get('/design/edit','works\action\api\DesignAction@edit');
+    //设计列表
+    Routes::get('/design/list','works\action\api\DesignAction@getUserProjectList');
     //获取设计结构
     Routes::get('/design/get/table','works\action\api\DesignAction@table');
 
-    ///工作区相关
+    #工作区相关
 
     //工作编辑
     Routes::get('/works/edit','works\action\api\worksAction@edit');
+    //工作列表
+    Routes::get('/works/list','works\action\api\worksAction@getList');
 
 
-    #####文档相关#####
+
+    #文档相关
 
     //编辑菜单
     Routes::get('/menu/user/edit','works\action\api\MenuAction@user_edit');
