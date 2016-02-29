@@ -161,23 +161,46 @@ class WorksLogic{
         {
             $tmp = self::set_tag_val($data,$so);
             $templateSo = [];
-            for($i=0;$i <=count($so);$i++)
+            $info = [];
+            $th = WorkTemplate::where(array('work_design_id'=>$design_id,'is_status'=>1))->sort('sort',false)->get('id as template_id,works_name as name,tag_data as tag');
+
+            for($i=0;$i <=count($so)-1;$i++)
             {
                 $worksId = 'worksId_'.$so[$i];
                 $worksInfo = $tmp[$worksId];
+                $infoData = $td = [];
+                //查找当前的模板信息
                 foreach($worksInfo as $k=>$v)
                 {
                     $templateSo[] = $v['template_id'];
                 }
-                //获取模板排序数据
+
                 $templateData = WorkTemplate::in_where('id',$templateSo)->sort('sort',false)->get();
-                p($templateData);
+                //获取模板排序
+                foreach($worksInfo as $k=>$v)
+                {
+                    if($v['template_id'] == $templateData[$k]['id'])
+                    {
+                        $worksInfo[$k]['sort'] = $templateData[$k]['sort'];
+                    }
+                }
 
-
+                $infoData['works_id'] = $so[$i];
+                //嵌套表格数据
+                foreach($worksInfo as $k=>$v)
+                {
+                    $td[] = $v['val'];
+                }
+                $infoData['td'] = $td;
+                $info[] = $infoData;
             }
+            unset($list['data']);
 
+            $list['table']['th'] = $th;
+            $list['table']['list'] = $info;
+
+            return $list;
         }
-
         return false;
     }
 

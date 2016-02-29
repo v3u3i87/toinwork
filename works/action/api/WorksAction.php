@@ -82,9 +82,11 @@ class WorksAction extends BaseAction{
         });
 
         $list = WorksLogic::get_design_id_list($design['id']);
-        p($list);
-
-
+        if($list)
+        {
+            $this->msg(200,'ok',$list);
+        }
+        $this->msg(201,'抱歉,没有数据');
     }
 
     public function show()
