@@ -73,12 +73,13 @@ Routes::group(array('prefix' => '/api/v1'),function() {
 
     #工作区相关
 
-    //工作编辑
-    Routes::get('/works/edit','works\action\api\worksAction@edit');
     //工作列表
     Routes::get('/works/list','works\action\api\worksAction@getList');
 
-
+    //工作编辑
+    Routes::get('/works/edit','works\action\api\worksAction@edit');
+    //工作详情
+    Routes::get('/works/show','works\action\api\worksAction@show');
 
     #文档相关
 
