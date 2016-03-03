@@ -17,6 +17,7 @@ use works\logic\WorksLogic;
 use works\model\WorkDesign;
 use works\model\Works;
 use works\model\WorksInfo;
+use works\logic\MsgLogic;
 
 class WorksAction extends BaseAction{
 
@@ -90,6 +91,8 @@ class WorksAction extends BaseAction{
         $this->msg(201,'抱歉,没有数据');
     }
 
+
+    //工作详情
     public function show()
     {
         //返回用户信息
@@ -111,52 +114,64 @@ class WorksAction extends BaseAction{
             $this->msg(205,'抱歉,您的设计工作系不存在..');
         });
 
-        $worksInfo = Data::get('works_id',0,function($val) use($design)
+        $works_id = Data::get('works_id',0,function($val) use($design)
         {
             if(empty($val))
             {
                 $this->msg(205,'抱歉,works_id参数不能为空');
             }
-            $info = Works::where(array('id'=>$val,'is_status'=>1,'design_id'=>$design['id']))->find();
-            if($info)
-            {
-                 $data = WorksInfo::where(array('works_id'=>$info['id'],'design_id'=>$design['id']))->get();
-                 if($data)
-                 {
-                     $tmp = [];
-                     foreach($data as $k=>$v)
-                     {
-                         $tmp[$k]['works_info_id']= $v['id'];
-                         $tmp[$k]['works_id']= $v['works_id'];
-                         $tmp[$k]['design_id']= $v['design_id'];
-                         $tmp[$k]['template_id']= $v['template_id'];
-                         $tmp[$k]['tag']= $v['tag'];
-                         //判断k
-                         if($v['tag'] === 'textarea')
-                         {
-                             //多行文本
-                             $tmp[$k]['val'] = $v['textarea'];
 
-                         }elseif($v['tag'] === 'editor'){
-                             //编辑器
-                             $tmp[$k]['val'] = $v['editor'];
-                         }else{
-                             //普通数据
-                             $tmp[$k]['val'] = $v['val'];
-                         }
-                         $tmp[$k]['update_time']= $v['update_time'];
-                         $tmp[$k]['create_time']= $v['create_time'];
-
-                     }
-                    return $tmp;
-                 }
-            }
-            $this->msg(205,'该信息不存在或已删除');
+           return $val;
         });
+
+        $info = Works::where(array('id'=>$works_id,'is_status'=>1,'design_id'=>$design['id']))->find();
+
+        if($info)
+        {
+            $data = WorksInfo::where(array('works_id'=>$info['id'],'design_id'=>$design['id']))->get();
+            if($data)
+            {
+                $tmp = [];
+                foreach($data as $k=>$v)
+                {
+                    $tmp[$k]['works_info_id']= $v['id'];
+                    $tmp[$k]['works_id']= $v['works_id'];
+                    $tmp[$k]['design_id']= $v['design_id'];
+                    $tmp[$k]['template_id']= $v['template_id'];
+                    $tmp[$k]['tag']= $v['tag'];
+                    //判断k
+                    if($v['tag'] === 'textarea')
+                    {
+                        //多行文本
+                        $tmp[$k]['val'] = $v['textarea'];
+
+                    }elseif($v['tag'] === 'editor'){
+                        //编辑器
+                        $tmp[$k]['val'] = $v['editor'];
+                    }else{
+                        //普通数据
+                        $tmp[$k]['val'] = $v['val'];
+                    }
+                    $tmp[$k]['update_time']= $v['update_time'];
+                    $tmp[$k]['create_time']= $v['create_time'];
+
+                }
+                $worksInfo = $tmp;
+            }
+        }else{
+            $this->msg(205,'工作信息不存在');
+        }
 
         if($worksInfo)
         {
-            $this->msg(200,'ok',$worksInfo);
+            $list['info'] = $worksInfo;
+            $list['msg'] = [];
+            $msg = MsgLogic::byWorksId($works_id);
+            if($msg)
+            {
+                $list['msg'] = $msg;
+            }
+            $this->msg(200,'ok',$list);
         }
 
         $this->msg(201,'没有任何数据');

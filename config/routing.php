@@ -81,6 +81,13 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     //工作详情
     Routes::get('/works/show','works\action\api\worksAction@show');
 
+    #评论
+
+    //工作评论
+    Routes::get('/msg/company/works','works\action\api\MsgAction@works');
+    //工作回复
+    Routes::get('/msg/company/works/reply','works\action\api\MsgAction@works_reply');
+
     #文档相关
 
     //编辑菜单
