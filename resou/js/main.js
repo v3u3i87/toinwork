@@ -5,7 +5,7 @@ require.config(
     {
         paths: {
             'jquery': '../lib/jquery-2.2.0.min',
-            'materialize': '../lib/materialize/js/materialize.min',
+            'bootstrap': '../lib/bootstrap/js/bootstrap.min',
             //加密库 base64
             'CryptoJS' : '../lib/CryptoJS/components/core-min',
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
@@ -20,27 +20,23 @@ require.config(
         //        'jquery': 'materialize'
         //    }
         //},
-        //shim: {
-        //    materialize: {
-        //        deps: ['jquery'],
-        //        exports: 'materialize'
-        //    }
-        //}
+        shim: {
+            bootstrap: {
+                deps: ['jquery'],
+                exports: 'bootstrap'
+            }
+        }
 
     }
 );
 
-require(['jquery'],function ($) {
+require(['jquery','bootstrap'],function ($,b) {
     var script = $('script[data-main][data-model]');
     var models = script.attr('data-model').split(',');
-
     if (models.length > 0)
     {
-        console.log(models);
-        //require('materialize');
         for (var i = 0; i < models.length; i++)
         {
-            console.log(models[i]);
             require([models[i]], function (m)
             {
                 if (m && m.init)

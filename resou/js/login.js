@@ -7,13 +7,6 @@ define(['ku'],function (ku) {
         console.log('login,顺利加载');
     }
 
-    $(".Toast").click(function(){
-        //console.log(typeof(Materialize));
-        //Materialize.toast('I am a toast!', 3000, 'rounded');
-    });
-
-
-
     //返回初始化
     return {
         init:init
