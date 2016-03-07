@@ -1,5 +1,6 @@
 *{margin: 0;padding: 0;}
 body{margin: auto 0;}
+.alert p{ text-align: center;}
 /*login*/
 .login_main{margin:10%;width: 960px; }
 .login_main {margin-left:20%;padding: 50px;}

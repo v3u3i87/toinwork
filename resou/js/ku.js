@@ -1,35 +1,45 @@
-define(function () {
+define(['alert'],function (msg) {
 
-    //异步ajax
-     var post = function (_url, postData, _type) {
-        var info = $.ajax({
-            type: _type,
-            url: _url,
-            dataType: 'json',
-            data: postData,
-            async: 0
-        }).responseText;
-         //console.log(info);
-        if (info) return JSON.parse(info);
+    /**
+     * 异步ajax
+     * @param u
+     * @param d
+     * @param t
+     * @returns {boolean}
+     */
+     var post = function (u, d, t)
+     {
+         var q = {type: t,url:u,dataType: 'json',data: d,async:0};
+         var i = $.ajax(q).responseText;
+         return i && typeof(i) == 'string' ?  JSON.parse(i) : false;
     };
 
-    //验证邮箱
-    var emailCheck = function (_this, _val)
+    /**
+     * 验证邮箱
+     * @param t dom对象
+     * @param v 值
+     * @returns {boolean}
+     */
+    var emailCheck = function (t, v)
     {
         var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-        if (_this && _val)
+        if (t && v)
         {
-            if (!this.test(_val))
+            if (!pattern.test(v))
             {
-                alert('请输入正确的邮箱地址');
-                _this.focus();
+                msg.internal('请输入正确的邮箱地址');
+                t.focus();
                 return false;
             }
             return true;
         }
     };
 
-    //判断是否为空
+    /**
+     * 判断是否为空
+     * @param value
+     * @returns {boolean}
+     */
     var is_null = function (value)
     {
         if (value !== null || value !== undefined || value !== '')
@@ -39,36 +49,48 @@ define(function () {
         return false;
     };
 
-    //判断是否有值
-    var is_focus =  function (_this, _val, _info)
+    /**
+     * 判断是否有值
+     * @param t
+     * @param v
+     * @param i
+     * @returns {boolean}
+     */
+    var is_focus =  function (t, v, i)
     {
-        if (_val == null || _val == undefined || _val == '')
+        if (!is_null(v))
         {
-            alert(_info);
-            _this.focus();
+            msg.internal(i);
+            t.focus();
             return false;
         }
         return true;
     };
 
-    //执行转义
-    var json = function (jsonVal)
+    /**
+     * 执行转义
+     * @param v
+     * @returns {boolean}
+     */
+    var json = function (v)
      {
-         if (this.is_null(jsonVal)) {
-             switch (typeof(jsonVal)) {
-                 case 'string':
-                     return JSON.parse(jsonVal);
-                     break;
+         if (!is_null(v))
+         {
+            return false;
+         }
 
-                 case 'object':
-                     return JSON.stringify(jsonVal);
-                     break;
-                 default:
-                     console.log('json转换失败,未知的类型.');
-                     break;
-             }
-         }else{
-             return false;
+         switch (typeof(v))
+         {
+             case 'string':
+                 return JSON.parse(v);
+                 break;
+
+             case 'object':
+                 return JSON.stringify(v);
+                 break;
+             default:
+                 console.log('json转换失败,未知的类型.');
+                 break;
          }
     };
 

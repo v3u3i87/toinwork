@@ -10,6 +10,7 @@ require.config(
             'CryptoJS' : '../lib/CryptoJS/components/core-min',
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
             'ku': 'ku',
+            'alert':'alert',
             //demo test
             'test':'test',
             'login':'login'
@@ -29,8 +30,10 @@ require.config(
 
     }
 );
-
 require(['jquery','bootstrap'],function ($,b) {
+    //设置提示框
+    $('body').prepend('<div class="objAlert"></div>');
+    
     var script = $('script[data-main][data-model]');
     var models = script.attr('data-model').split(',');
     if (models.length > 0)
@@ -48,3 +51,4 @@ require(['jquery','bootstrap'],function ($,b) {
 
     }
 });
+
