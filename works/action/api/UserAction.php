@@ -3,6 +3,7 @@ namespace works\action\api;
 
 use Config;
 use Data;
+use Session;
 use works\action\BaseAction;
 use works\logic\UserLogic;
 use works\model\UserAccount;
@@ -77,6 +78,8 @@ class UserAction extends BaseAction{
      * 登陆
      */
     public function login(){
+        $client = $this->getClientType();
+
         $email = Data::get('email',null,function($val)
         {
             if(empty($val))
@@ -101,12 +104,15 @@ class UserAction extends BaseAction{
             return $val;
         });
 
-        if($loginInfo = UserLogic::login($email,$passwd))
+        if($client)
         {
-            $this->msg(200,'登陆成功',$loginInfo);
+            if($loginInfo = UserLogic::login($email,$passwd))
+            {
+                $this->msg(200,'登陆成功',$loginInfo);
+            }
+            $this->msg(206,'邮箱或是密码错误');
         }
-
-        $this->msg(206,'邮箱或是密码错误');
+        $this->msg(206,'非法请求');
     }
 
     /**

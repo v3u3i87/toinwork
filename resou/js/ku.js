@@ -1,4 +1,4 @@
-define(['alert'],function (msg) {
+define(['alert','jqcookie'],function (msg) {
 
     /**
      * 异步ajax
@@ -95,7 +95,7 @@ define(['alert'],function (msg) {
     };
 
     //设置临时值
-     var setVal = function (name, json)
+     var setVal = function (name, val)
      {
 
         if (!this.is_null(name))
@@ -104,12 +104,12 @@ define(['alert'],function (msg) {
             return;
         }
 
-        if (!this.is_null(json))
+        if (!this.is_null(val))
         {
             alert('没有名称值');
             return;
         }
-        $.cookie(name, json, {expires: 1});
+        $.cookie(name, val, {expires: 1});
     };
 
     //获取值

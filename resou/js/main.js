@@ -11,9 +11,14 @@ require.config(
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
             'ku': 'ku',
             'alert':'alert',
+            'fakeLoader':'../lib/fakeLoader/fakeLoader.min',
+            'jqcookie':'../lib/jquery/jquery.cookie',
             //demo test
             'test':'test',
-            'login':'login'
+            //登陆
+            'login':'login',
+            //主页
+            'home':'home',
         },
 
         //map: {

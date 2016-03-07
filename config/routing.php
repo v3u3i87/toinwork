@@ -7,32 +7,6 @@ Routes::get('/test', 'works\action\MainAction@test');
 //升级
 Routes::get('/upgrade','works\action\api\UpgradeAction@main');
 
-//web端
-Routes::group(array('prefix'=>'/main'),function(){
-
-    //首页 /main/home
-    Routes::get('/home','works\action\HomeAction@main');
-
-    //设计工作区
-    Routes::get('/design','works\action\HomeAction@design');
-
-    ###工作区
-    Routes::get('/works','works\action\WorksAction@main');
-    //编辑
-    Routes::get('/works/edit','works\action\WorksAction@edit');
-    //详情
-    Routes::get('/works/show','works\action\WorksAction@show');
-
-    ###文档
-
-    //文档列表 /main/docs
-    Routes::get('/docs','works\action\DocsAction@all');
-    //文档详情 /main/docs/show
-    Routes::get('/docs/show','works\action\DocsAction@show');
-
-
-});
-
 //API
 Routes::group(array('prefix' => '/api/v1'),function() {
 
@@ -109,3 +83,29 @@ Routes::group(array('prefix' => '/api/v1'),function() {
 
 });
 
+
+//web端
+Routes::group(array('prefix'=>'/main','filters'=>'login'),function(){
+
+    //首页 /main/home
+    Routes::get('/home','works\action\HomeAction@main');
+
+    //设计工作区
+    Routes::get('/design','works\action\HomeAction@design');
+
+    ###工作区
+    Routes::get('/works','works\action\WorksAction@main');
+    //编辑
+    Routes::get('/works/edit','works\action\WorksAction@edit');
+    //详情
+    Routes::get('/works/show','works\action\WorksAction@show');
+
+    ###文档
+
+    //文档列表 /main/docs
+    Routes::get('/docs','works\action\DocsAction@all');
+    //文档详情 /main/docs/show
+    Routes::get('/docs/show','works\action\DocsAction@show');
+
+
+});

@@ -11,12 +11,13 @@ define(['ku','alert'],function (ku,alert) {
             {
                 var passwdVal = obj.passwd.val();
                 ku.is_focus(obj.passwd,passwdVal,'抱歉,密码不能为空');
-                var req = ku.post('/api/v1/user/login', {email: emailVal, passwd: passwdVal}, 'POST');
+                var req = ku.post('/api/v1/user/login?client=web', {email: emailVal, passwd: passwdVal}, 'POST');
                 if (req && req.code == '200')
                 {
                     console.log(req);
+                    ku.setVal('token',req.data.token);
                     alert.success('正在登陆,请稍后');
-
+                    window.location.href='/main/home';
                 } else {
                     alert.warning(req.msg);
                 }

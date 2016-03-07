@@ -13,7 +13,7 @@ return array(
     /**
      * 是否开启前端域名
      */
-    'is_front_domain'=>false,
+    'is_front_domain'=>1,
 
     /**
      * 前端域名
