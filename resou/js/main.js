@@ -33,7 +33,7 @@ require.config(
 require(['jquery','bootstrap'],function ($,b) {
     //设置提示框
     $('body').prepend('<div class="objAlert"></div>');
-    
+
     var script = $('script[data-main][data-model]');
     var models = script.attr('data-model').split(',');
     if (models.length > 0)

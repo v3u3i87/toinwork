@@ -1,8 +1,6 @@
 //第一个参数可以为空,如没有需要加载的组件
 define(['ku','alert'],function (ku,alert) {
 
-    var objAlert = $(".objAlert");
-
     function init()
     {
         var obj = {email:$(".email"),passwd:$(".passwd")};
@@ -17,9 +15,10 @@ define(['ku','alert'],function (ku,alert) {
                 if (req && req.code == '200')
                 {
                     console.log(req);
-                    objAlert.empty().html(alert.success('正在登陆,请稍后'));
+                    alert.success('正在登陆,请稍后');
+
                 } else {
-                    objAlert.empty().html(alert.warning(req.msg));
+                    alert.warning(req.msg);
                 }
             }
         });
