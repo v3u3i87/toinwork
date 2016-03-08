@@ -131,6 +131,7 @@
 		pull: false,
 		put: true
 	}].forEach(function (groupOpts, i) {
+		console.log(groupOpts);
 		Sortable.create(byId('advanced-' + (i + 1)), {
 			sort: (i != 1),
 			group: groupOpts,

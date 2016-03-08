@@ -11,16 +11,24 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
 
             var field_list = document.getElementById("field_list");
             var diy_design_field = document.getElementById("diy_design_field");
+
             Sortable.create(field_list, {
-                group: "sorting",
+                group: {
+                    name: 'field',
+                    pull: 'clone',
+                    put: false
+                },
                 sort: false,
-                //handle: ".my-handle"
             });
 
             // sort: false
             Sortable.create(diy_design_field, {
-                group: "sorting",
-                sort: true
+                group: {
+                    name: 'field',
+                    pull: false,
+                    put: true
+                },
+                sort: true,
             });
 
 
