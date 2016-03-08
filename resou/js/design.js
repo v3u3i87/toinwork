@@ -37,6 +37,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
             });
             //删除
             $(".del").click();
+            $('#diy_design_field li').click(function(){$(this).addClass('on').siblings().removeClass('on');})
         }else{
             msg.info('获取字段失败');
         }
