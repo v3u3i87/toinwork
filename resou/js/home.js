@@ -12,7 +12,7 @@ define(['ku','fakeLoader'],function (ku) {
             //imagePath:"yourPath/customizedImage.gif" //If you want can you insert your custom image
         });
     }
-    
+
     return {
         init:init
     }
