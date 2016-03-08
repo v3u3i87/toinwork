@@ -12,20 +12,22 @@ require.config(
             'ku': 'ku',
             'alert':'alert',
             'fakeLoader':'../lib/fakeLoader/fakeLoader.min',
+            'Sortable':'../lib/Sortable/Sortable',
             'jqcookie':'../lib/jquery/jquery.cookie',
+            'jqdad':'../lib/jquery/jquery.dad',
             //demo test
             'test':'test',
             //登陆
             'login':'login',
             //主页
             'home':'home',
+            //设计
+            'design':'design',
+            //交互的API
+            'api':'api',
+
         },
 
-        //map: {
-        //    '*': {
-        //        'jquery': 'materialize'
-        //    }
-        //},
         shim: {
             bootstrap: {
                 deps: ['jquery'],

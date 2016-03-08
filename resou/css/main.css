@@ -1,9 +1,37 @@
 *{margin: 0;padding: 0;}
-body{margin: auto 0;}
+body{margin: auto 0; width: auto;}
 .alert span{ text-align: center;}
 /*login*/
 .login_main{margin:10%;width: 960px; }
 .login_main {margin-left:20%;padding: 50px;}
-
 .login_main div.login_title{ margin-left: 15%;}
 .login_main input{ width: 300px;}
+/*头部*/
+.header{ height: 80px;border-bottom: 1px #e8e8e8 dashed}
+.header div.back{margin:20px 0 0 20px; }
+.header div.back a{ width: 80px;}
+.title{padding-top:10px;}
+.title small.title_info{color: #ccc; text-align: center;}
+.title p.title_name{font-size: 20px;}
+
+
+/**/
+.w200{ width: 200px;}
+
+
+
+/*设计工作*/
+.diy{float:left;margin:20px; width:960px; height:auto!important;min-height: 664px; padding:10px;border: 1px gainsboro solid;}
+.diy_design{ margin:10px 0;border-top: 1px #c0c0c0 dashed;}
+.diy_design ul li{ padding:15px;list-style:none;height:50px; border-bottom: 1px #c0c0c0 dashed;}
+
+.diy_design ul li span.diy_design_name{ width:100px;}
+.diy_design ul li span.diy_design_info{ margin-left:100px;}
+
+#diy_design_field li{cursor:pointer;}
+#diy_design_field li:hover{border: 1px #222 dashed;}
+
+.field{margin:20px 0 0 970px;padding:10px; width:250px;}
+
+.field_ul li{ cursor:pointer;list-style:none;float:left; margin:5px; padding: 5px; width:90px; background:#5F9EDF;color: #fff; text-align: center;}
+

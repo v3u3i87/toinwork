@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="zn-CH">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@val('name')</title>
+    @public_css('/resou/lib/bootstrap/css/bootstrap.min.css')
+    @css('main.css')
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 
+<header class="header">
+
+    <div class="col-sm-5 back">
+        <a herf="/main/home" class="btn btn-info">返回</a>
+    </div>
+
+    <div class="title">
+        <small class="title_info">XX项目</small>
+        <p class="title_name">工作设计区</p>
+    </div>
+</header>
+
+<section class="design_main">
+
+    <div class="diy">
+
+        <div class="diy_name form-inline">
+            <div class="form-group">
+                <label>工作区名称</label>
+                <input type="text" class="form-control w200" placeholder="请输入工作区名称哦">
+            </div>
+        </div>
+
+        <div class="diy_design">
+            <ul id="diy_design_field">
+
+                <li>
+                    <span class="diy_design_name">名称</span>
+                    <span class="diy_design_info">嘻嘻嘻哈哈</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="diy_design_bnt">
+            <button type="button" class="btn btn-info">取消</button>
+            <button type="button" class="btn btn-success">提交</button>
+        </div>
+
+        <!--./diy-->
+    </div>
+
+
+    <!--字段区-->
+    <div class="field">
+        <h5>常用字段</h5>
+        <ul class="field_ul" id="field_list"></ul>
+    </div>
+
+</section>
+
 </body>
 </html>
+<script data-main="/resou/js/main.js" data-model="design" src="/resou/js/require.js"></script>
