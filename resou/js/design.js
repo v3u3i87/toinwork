@@ -31,7 +31,12 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
                 sort: true,
             });
 
-
+            $(".item").click(function(){
+                $(this).find(".setB").empty().append('<span class="close del">×</span>');
+                console.log(1);
+            });
+            //删除
+            $(".del").click();
         }else{
             msg.info('获取字段失败');
         }
@@ -48,7 +53,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
         var h = '';
         for(var i=0;i < v.length;i++)
         {
-            h+='<li>'+v[i].name+'</li>';
+            h+='<li class="item">'+v[i].name+'<span class="setB"></span></li>';
         }
         //console.log(h);
         $(".field_ul").empty().html(h);
