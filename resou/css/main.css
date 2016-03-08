@@ -34,6 +34,8 @@ body{margin: auto 0; width: auto;}
 .field{margin:20px 0 0 970px;padding:10px; width:250px;}
 
 .field_ul li{ cursor:pointer;list-style:none;float:left; margin:5px; padding: 5px; width:90px; background:#5F9EDF;color: #fff; text-align: center;}
-.diy_design ul li .show {display: none;}
+.diy_design ul li .li-show {display: none;}
+#diy_design_field li.on:hover{border: 1px solid #008ed2;}
 .diy_design ul li.on {position: relative; border: 1px solid #008ed2;}
-.diy_design ul li.on .show {display: block;position: absolute;left: 950px;top: 0; z-index: 1;width: 300px;border: 1px solid #008ed2;background: #fff;}
+.diy_design ul li.on .li-show {display: block;position: absolute;left: 950px;top: 0; z-index: 1;width: 300px;border: 1px solid #008ed2;background: #fff;}
+

@@ -36,8 +36,10 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
                 console.log(1);
             });
             //删除
-            $(".del").click();
-            $('#diy_design_field li').click(function(){$(this).addClass('on').siblings().removeClass('on');})
+            $(".del").click();           
+            $(document).on('click','#diy_design_field li',function() {
+                $(this).addClass('on').siblings().removeClass('on');
+            });
         }else{
             msg.info('获取字段失败');
         }
@@ -54,7 +56,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
         var h = '';
         for(var i=0;i < v.length;i++)
         {
-            h+='<li class="item">'+v[i].name+'<span class="setB"></span></li>';
+            h+='<li class="item">'+v[i].name+'<span class="setB"></span><div class="li-show"><input type="text"></div></li>';
         }
         //console.log(h);
         $(".field_ul").empty().html(h);
