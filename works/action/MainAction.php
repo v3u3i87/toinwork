@@ -12,6 +12,10 @@ class MainAction extends BaseAction{
      */
     public function login()
     {
+        if(isset($_COOKIE['token']))
+        {
+            jump('/main/home');
+        }
         $this->val('name','登陆 - toinwork');
         $this->view('login.html');
     }
