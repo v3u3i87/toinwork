@@ -87,7 +87,7 @@ Routes::group(array('prefix' => '/api/v1'),function() {
 //web端
 Routes::group(array('prefix'=>'/main','filters'=>'login'),function(){
 
-    //首页 /main/home
+    //项目区
     Routes::get('/home','works\action\HomeAction@main');
 
     //设计工作区

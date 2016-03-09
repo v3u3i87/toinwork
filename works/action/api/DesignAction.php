@@ -168,7 +168,10 @@ class DesignAction extends BaseAction{
         $data = DesignLogic::findProject_idList($projectData['id']);
         if($data)
         {
-            $this->msg(200,'ok',$data);
+            $this->msg(200,'ok',array('list'=>$data,'project'=>array(
+                'project_id'=>$projectData['id'],
+                'name'=>$projectData['name']
+            )));
         }
         $this->msg(201,'not data');
     }

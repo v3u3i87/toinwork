@@ -12,7 +12,7 @@ class HomeAction extends BaseAction{
      */
     public function main()
     {
-        $this->val('name','欢迎您使用 - toinwork');
+        $this->val('name','项目区域 - toinwork');
         $this->view('main.html');
     }
 
@@ -23,10 +23,9 @@ class HomeAction extends BaseAction{
      */
     public function design()
     {
-        $this->val('name','设计工作区 - toinwork');
+        $this->val('name','设计工作模板 - toinwork');
         $this->view('design.html');
     }
-
 
 
 

@@ -100,13 +100,13 @@ define(['alert','jqcookie'],function (msg) {
 
         if (!this.is_null(name))
         {
-            alert('没有名称值');
+            msg.internal('没有名称值');
             return;
         }
 
         if (!this.is_null(val))
         {
-            alert('没有名称值');
+            msg.internal('没有名称值');
             return;
         }
         $.cookie(name, val, {expires: 1});
@@ -118,6 +118,20 @@ define(['alert','jqcookie'],function (msg) {
         return $.cookie(key);
     };
 
+    /**
+     * 跳转
+     * @param u
+     * @returns {*}
+     */
+    var jump = function(u){
+        if(is_null(u))
+        {
+            return window.location.href = u;
+        }
+        //msg.internal('没有正确的URL地址');
+        console.log('没有正确的URL地址');
+    };
+
     //返回对象
     return {
         emailCheck: emailCheck,
@@ -126,7 +140,8 @@ define(['alert','jqcookie'],function (msg) {
         json: json,
         post: post,
         setVal: setVal,
-        getVal: getVal
+        getVal: getVal,
+        jump:jump,
     }
 
 

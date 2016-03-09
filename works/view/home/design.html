@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@val('name')</title>
     @public_css('/resou/lib/bootstrap/css/bootstrap.min.css')
     @css('main.css')
@@ -19,13 +19,15 @@
 <header class="header">
 
     <div class="col-sm-5 back">
-        <a herf="/main/home" class="btn btn-info">返回</a>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target=".confirm_quit" >返回</button>
     </div>
 
     <div class="title">
         <small class="title_info">XX项目</small>
         <p class="title_name">工作设计区</p>
     </div>
+
+
 </header>
 
 <section class="design_main">
@@ -66,6 +68,26 @@
     </div>
 
 </section>
+
+
+<div class="modal fade confirm_quit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">是否返回?</h4>
+            </div>
+            <div class="modal-body">
+                <p>如果返回,目前的设计的数据都是无效的</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary confirm_jump">确定返回</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 </body>
 </html>
