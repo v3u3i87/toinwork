@@ -31,12 +31,17 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
                 sort: true,
             });
 
+            //删除事件
             $(".item").click(function(){
                 $(this).find(".setB").empty().append('<span class="close del">×</span>');
-                console.log(1);
+                //console.log(1);
             });
-            //删除
-            $(".del").click();           
+
+            //删除对象
+            $(document).on('click','.del',function(){
+                $(".on").remove();
+            });
+
             $(document).on('click','#diy_design_field li',function() {
                 $(this).addClass('on').siblings().removeClass('on');
             });
