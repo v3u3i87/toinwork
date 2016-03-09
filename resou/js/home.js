@@ -8,14 +8,17 @@ define(['ku','alert','api'],function (ku,msg,api) {
         if(projectList && projectList.code == '200')
         {
             viewProjectList(projectList.data);
-            $(".item").click(function(){
+            $(document).on('click','.item',function() {
                 var project_id = $(this).data('project_id');
                 var designList = api.designList(project_id);
                 designListLogic(designList,projectList.data);
             });
-
+        }else{
+            msg.info('hi,您并没有加入任何项目哦..');
         }
     }
+
+
 
     /**
      * 设计列表逻辑
@@ -57,7 +60,7 @@ define(['ku','alert','api'],function (ku,msg,api) {
      */
     function viewDesignList(tmp)
     {
-        console.log(tmp);
+        //console.log(tmp);
         var v = tmp.list
         var h = '<ul class="designList">';
         for(var i=0;i < v.length;i++)
@@ -75,7 +78,7 @@ define(['ku','alert','api'],function (ku,msg,api) {
      */
     function viewProjectList(v)
     {
-        console.log(v);
+        //console.log(v);
         var h = '<ul class="projectList">';
         for(var i=0;i < v.length;i++)
         {
