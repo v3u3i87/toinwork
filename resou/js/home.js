@@ -7,17 +7,26 @@ define(['ku','alert','api'],function (ku,msg,api) {
     {
         if(projectList && projectList.code == '200')
         {
+            //渲染项目列表
             viewProjectList(projectList.data);
+            //切换区域渲染
             $(document).on('click','.item',function() {
                 var project_id = $(this).data('project_id');
                 var designList = api.designList(project_id);
                 designListLogic(designList,projectList.data);
             });
+
+            //切换区域渲染
+            $(document).on('click','.designItem',function() {
+                var project_id = $(this).data('project_id');
+                var design_id = $(this).data('design_id');
+                ku.jump('/main/works?project_id='+project_id+'&design_id='+design_id);
+            });
+
         }else{
             msg.info('hi,您并没有加入任何项目哦..');
         }
     }
-
 
 
     /**

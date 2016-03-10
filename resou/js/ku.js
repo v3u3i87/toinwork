@@ -132,6 +132,19 @@ define(['alert','jqcookie'],function (msg) {
         console.log('没有正确的URL地址');
     };
 
+
+    var getUrlParam  = function (name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)
+        {
+            return  unescape(r[2]);
+        }else{
+            return null;
+        }
+    }
+
     //返回对象
     return {
         emailCheck: emailCheck,
@@ -142,6 +155,7 @@ define(['alert','jqcookie'],function (msg) {
         setVal: setVal,
         getVal: getVal,
         jump:jump,
+        getUrlParam:getUrlParam
     }
 
 

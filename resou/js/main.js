@@ -14,7 +14,8 @@ require.config(
             'fakeLoader':'../lib/fakeLoader/fakeLoader.min',
             'Sortable':'../lib/Sortable/Sortable',
             'jqcookie':'../lib/jquery/jquery.cookie',
-            'jqdad':'../lib/jquery/jquery.dad',
+            //数据表格
+            'dataTables':'../lib/DataTables/media/js/jquery.dataTables.min',
             //demo test
             'test':'test',
             //登陆

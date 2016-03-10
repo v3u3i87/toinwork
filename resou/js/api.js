@@ -35,10 +35,27 @@ define(['ku','alert'],function (ku,msg) {
         return ku.post('/api/v1/design/list',{token:token,project_id:project_id},'POST');
     }
 
+
+    /**
+     * 获取工作列表
+     * @param project_id
+     * @param design_id
+     * @returns {boolean}
+     */
+    function worksList(project_id,design_id)
+    {
+        return ku.post('/api/v1/works/list',{token:token,project_id:project_id,design_id:design_id},'GET');
+    }
+
+
+    /**
+     * 返回函数
+     */
     return {
         getFieldList:getFieldList,
         projectList:projectList,
-        designList:designList
+        designList:designList,
+        worksList:worksList
     }
 
 

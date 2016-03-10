@@ -144,10 +144,20 @@ class WorksLogic{
     }
 
 
-
+    /**
+     * 工作列表
+     * @param null $design_id
+     * @return bool|mixed
+     */
     public static function get_design_id_list($design_id=null)
     {
         $list = Works::get_is_list_ok($design_id);
+
+        if(!$list)
+        {
+            return false;
+        }
+
         $so = [];
         //遍历查询ID
         foreach($list['data'] as $k=>$v)

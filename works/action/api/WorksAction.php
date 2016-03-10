@@ -82,10 +82,11 @@ class WorksAction extends BaseAction{
             }
             $this->msg(205,'抱歉,您的设计工作系不存在..');
         });
-
         $list = WorksLogic::get_design_id_list($design['id']);
         if($list)
         {
+            $list['project'] = array('project_id'=>$project['id'],'name'=>$project['name']);
+            $list['design'] = array('design_id'=>$design['id'],'name'=>$design['name']);
             $this->msg(200,'ok',$list);
         }
         $this->msg(201,'抱歉,没有数据');
