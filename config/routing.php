@@ -48,11 +48,11 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     #工作区相关
 
     //工作列表
-    Routes::get('/works/list','works\action\api\worksAction@getList');
+    Routes::get('/works/list','works\action\api\WorksAction@getList');
     //工作编辑
-    Routes::get('/works/edit','works\action\api\worksAction@edit');
+    Routes::get('/works/edit','works\action\api\WorksAction@edit');
     //工作详情
-    Routes::get('/works/show','works\action\api\worksAction@show');
+    Routes::get('/works/show','works\action\api\WorksAction@show');
 
     #评论
 
