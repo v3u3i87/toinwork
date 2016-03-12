@@ -49,13 +49,26 @@ define(['ku','alert'],function (ku,msg) {
 
 
     /**
+     * 工作详情
+     * @param project_id
+     * @param design_id
+     * @param works_id
+     * @returns {boolean}
+     */
+    function worksShow(project_id,design_id,works_id)
+    {
+        return ku.post('/api/v1/works/show',{token:token,project_id:project_id,design_id:design_id,works_id:works_id},'POST');
+    }
+
+    /**
      * 返回函数
      */
     return {
         getFieldList:getFieldList,
         projectList:projectList,
         designList:designList,
-        worksList:worksList
+        worksList:worksList,
+        worksShow:worksShow,
     }
 
 

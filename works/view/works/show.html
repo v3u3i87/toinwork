@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="zn-CH">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@val('name')</title>
+    @public_css('/resou/lib/bootstrap/css/bootstrap.min.css')
+    @public_css('/resou/lib/fakeLoader/fakeLoader.css')
+    @css('main.css')
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<div>工作区</div>
+<header class="header">
+
+    <div class="col-sm-4 logo">
+        <a href="#">toinwork</a>
+    </div>
+
+    <div class="col-sm-4 title">
+        <small class="title_info">返回</small>
+        <p class="title_name">工作区</p>
+    </div>
+
+    <div class="col-sm-6 nav">
+        <ul>
+            <li><a href="/main/design">设计</a></li>
+            <li><a href="#">帮助</a></li>
+            <li><a href="#">笔记</a></li>
+            <li><a href="#">设置</a></li>
+            <li><a href="#">通知</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<section class="main">
+
+
+</section>
+
+
 </body>
 </html>
+<script data-main="/resou/js/main.js" data-model="works_show" src="/resou/js/require.js"></script>

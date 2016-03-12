@@ -28,6 +28,8 @@ require.config(
             'api':'api',
             //工作区
             'workspace':'workspace',
+            //工作详情
+            'works_show':'works_show',
         },
 
         shim: {

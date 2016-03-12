@@ -115,6 +115,10 @@ class WorksAction extends BaseAction{
             $this->msg(205,'抱歉,您的设计工作系不存在..');
         });
 
+        $list['project'] = array('project_id'=>$project['id'],'name'=>$project['name'],'icon'=>$project['icon']);
+        $list['design'] = ['design_id'=>$design['id'],'name'=>$design['name'],'icon'=>$design['icon']];
+
+
         $works_id = Data::get('works_id',0,function($val) use($design)
         {
             if(empty($val))

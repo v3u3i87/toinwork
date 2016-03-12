@@ -1,8 +1,0 @@
-*{margin: 0;padding: 0;}
-body{margin: auto 0;}
-/*login*/
-.login_main{margin:10%;width: 960px; }
-.login_main {margin-left:20%;padding: 50px;}
-
-.login_main div.login_title{ margin-left: 15%;}
-.login_main input{ width: 300px;}
