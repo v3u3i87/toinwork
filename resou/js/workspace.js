@@ -15,7 +15,6 @@ define(['ku','alert','api'],function (ku,msg,api) {
 
         if(designList && designList.code=='200')
         {
-            $(".main").empty();
             var project = designList.data.project;
             $(".title_info").empty().text('返回').css({"cursor":"pointer"});
             $(".title_name").empty().text(project.name);
@@ -30,7 +29,7 @@ define(['ku','alert','api'],function (ku,msg,api) {
             $(document).on('click','.designItem',function() {
                 var project_id = $(this).data('project_id');
                 var design_id = $(this).data('design_id');
-                ku.jump('/main/works?project_id='+project_id+'&design_id='+design_id);
+                return ku.jump('/main/works?project_id='+project_id+'&design_id='+design_id);
             });
 
         }else{

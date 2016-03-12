@@ -12,7 +12,7 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
             var data = worksList.data;
             $(".title_info").empty().text('返回项目-'+data.project.name).css({"cursor":"pointer"});
             $(".title_name").empty().text(data.design.name);
-            
+
             //返回工作区
             $(document).on('click','.title_info',function()
             {
