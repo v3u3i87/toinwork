@@ -90,8 +90,15 @@ Routes::group(array('prefix'=>'/main','filters'=>'login'),function(){
     //项目区
     Routes::get('/home','works\action\HomeAction@main');
 
-    //设计工作区
+    /**
+     * 设计
+     */
     Routes::get('/design','works\action\HomeAction@design');
+
+    /**
+     * 工作区
+     */
+    Routes::get('/workspace','works\action\HomeAction@workspace');
 
     ###工作区
     Routes::get('/works','works\action\WorksAction@main');

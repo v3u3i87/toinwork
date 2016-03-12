@@ -26,7 +26,8 @@ require.config(
             'design':'design',
             //交互的API
             'api':'api',
-
+            //工作区
+            'workspace':'workspace',
         },
 
         shim: {

@@ -4,26 +4,34 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
     var design_id = ku.getUrlParam('design_id');
 
     var worksList = api.worksList(project_id,design_id);
-    //console.log(worksList);
 
     function init()
     {
-        if(!worksList && worksList.code !== '200')
+        if(worksList && worksList.code == '200')
         {
-            msg.info('抱歉,该工作区没有数据');
+            var data = worksList.data;
+            $(".title_info").empty().text('返回项目-'+data.project.name).css({"cursor":"pointer"});
+            $(".title_name").empty().text(data.design.name);
+            
+            //返回工作区
+            $(document).on('click','.title_info',function()
+            {
+                return ku.jump('/main/workspace?project_id='+project_id);
+            });
+
+            if(data.table) {
+                //渲染列表
+                $(".info_tr").empty().html(th(data.table.th));
+                $(".info_table").empty().html(td(data.table.list));
+            }else{
+                return msg.info('没有数据');
+            }
+
+        }else{
+            return msg.info('抱歉,该工作区没有数据');
         }
 
-        var data = worksList.data;
-        $(".title_info").empty().text('返回项目-'+data.project.name).css({"cursor":"pointer"});
-        $(".title_name").empty().text(data.design.name);
 
-        //渲染列表
-        $(".info_tr").empty().html(th(data.table.th));
-        $(".info_table").empty().html(td(data.table.list));
-
-        $(document).on('click','.title_info',function() {
-            ku.jump('/main/home?project_id='+project_id);
-        });
     }
 
 
