@@ -13,7 +13,7 @@ define(['ku','alert'],function (ku,msg) {
      */
     function getFieldList()
     {
-        return ku.post('/api/v1/tag/sys/field',{},'GET');
+        return ku.post('/api/v1/tag/sys/field',{},'POST');
     }
 
     /**
@@ -22,7 +22,7 @@ define(['ku','alert'],function (ku,msg) {
      */
     function projectList()
     {
-        return ku.post('/api/v1/project/list?token='+token,{},'GET');
+        return ku.post('/api/v1/project/list?token='+token,{},'POST');
     }
 
 
@@ -44,7 +44,7 @@ define(['ku','alert'],function (ku,msg) {
      */
     function worksList(project_id,design_id)
     {
-        return ku.post('/api/v1/works/list',{token:token,project_id:project_id,design_id:design_id},'GET');
+        return ku.post('/api/v1/works/list',{token:token,project_id:project_id,design_id:design_id},'POST');
     }
 
 
