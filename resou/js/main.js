@@ -14,6 +14,11 @@ require.config(
             'fakeLoader':'../lib/fakeLoader/fakeLoader.min',
             'Sortable':'../lib/Sortable/Sortable',
             'jqcookie':'../lib/jquery/jquery.cookie',
+            'simditor':'../lib/simditor/simditor',
+            'simple-module':'../lib/simditor/module',
+            'simple-hotkeys':'../lib/simditor/hotkeys',
+            'simple-uploader':'../lib/simditor/uploader',
+
             //数据表格
             'dataTables':'../lib/DataTables/media/js/jquery.dataTables.min',
             //demo test

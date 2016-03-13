@@ -2,14 +2,11 @@ body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textare
 table{border-collapse:collapse;border-spacing:0;}
 fieldset,img {border:0;}
 address,caption, cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
-ol,ul {list-style:none;}
+ol,ul,li {list-style:none;}
 capation,th{text-align:left;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 q:before, q:after{content:' '}
 abbr,acronym{border:0;}
-
-
-
 .f12{font-size:12px;}
 .f13{font-size:13px;}
 .f14{font-size:14px;}
@@ -44,7 +41,6 @@ abbr,acronym{border:0;}
 .zoom{zoom:1}
 .hidden{visibility:hidden;}
 .none{display:none;}
-
 
 .w10{width:10px;}
 .w20{width:20px;}
@@ -132,75 +128,22 @@ abbr,acronym{border:0;}
 .pr30{padding-right:30px;}
 .pr50{padding-right:50px;}
 .pr100{padding-right:100px;}
-
-
-/*body{margin: auto 0; width: auto;}*/
-li{list-style:none;}
 .alert span{ text-align: center;}
-/*login*/
-.login_main{margin:10%;width: 960px; }
-.login_main {margin-left:20%;padding: 50px;}
-.login_main div.login_title{ margin-left: 15%;}
-.login_main input{ width: 300px;}
-/*头部*/
-.header{ height: 80px;border-bottom: 1px #e8e8e8 dashed}
-.header div.back,div.logo,div.nav{margin:20px 0 0 20px; }
-.header div.back button{ width: 80px;}
-.header div.back a{ width: 80px;}
-
-.header div.logo a{ width: 80px; font-size: 25px; color: #222;}
-
-.title{padding-top:10px;}
-.title small.title_info{color: #ccc; text-align: center;}
-.title p.title_name{font-size: 20px;}
-
-.header div.nav{ width: 360px;}
-
-.header div.nav ul li{ list-style:none;float: left; margin: 5px;}
-.header div.nav ul li a{text-decoration:none; color: #222;}
-
-.main{ width: 960px; margin: auto;}
-
-/*home*/
-.projectList li,.designList li{cursor:pointer; float: left; margin: 10px; width: 215px; height: 160px; border: 1px #e8e8e8 dashed; padding: 10px; display: block;}
-/*.projectList li.item{cursor:pointer;}*/
-
-/*设计工作*/
-.diy{float:left;margin:20px; width:960px; height:auto!important;min-height: 664px; padding:10px;border: 1px gainsboro solid;}
-.diy_design{ margin:10px 0;border-top: 1px #c0c0c0 dashed;}
-.diy_design ul li{ padding:15px;list-style:none;height:50px; border-bottom: 1px #c0c0c0 dashed;}
-
-.diy_design ul li span.diy_design_name{ width:100px;}
-.diy_design ul li span.diy_design_info{ margin-left:100px;}
-
-#diy_design_field li{cursor:pointer;}
-#diy_design_field li:hover{border: 1px #222 dashed;}
-
-.field{margin:20px 0 0 970px;padding:10px; width:250px;}
-
-.field_ul li{ cursor:pointer;list-style:none;float:left; margin:5px; padding: 5px; width:90px; background:#5F9EDF;color: #fff; text-align: center;}
-.field_ul li .li-show {display: none;}
-.diy_design ul li .li-show {display: none;}
-#diy_design_field li.on:hover{border: 1px solid #008ed2;}
-.diy_design ul li.on {position: relative; border: 1px solid #008ed2;}
-.diy_design ul li.on .li-show {display: block;position: absolute;left: 950px;top: 0; z-index: 1;width: 250px;min-height: 300px; border: 1px solid #008ed2;background: #fff;}
 
 
-/*works-list*/
-.works_info{cursor:pointer;}
+/*header position: relative;*/
+body{background: #f0f0f0;}
+.head{background-color: #fff;height: 100%;box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);border-bottom: 1px solid #ddd}
+.header{width:1136px;margin:auto;height:50px;padding-top: 15px;}
+.logo{float:left;width: 300px;}
+.nav{float: right;}
+.nav ul li{float: left; margin: 0 10px;}
+.nav ul li a{color: #666;text-decoration: none;}
+.nav ul li a img{ height:20px;border-radius: 30px; margin-bottom: 2px;}
 
+.docs_show_main{width:820px;margin:auto; margin-top: 10px;}
 
+.docs_name{border-bottom: 1px solid #e8e8e8;font-size: 24px; padding: 10px 0;}
+.docs_name input{border: 0; width: 675px;}
 
-/*works-show*/
-.works_nav{ margin-top: 5px;}
-.works_form,.works_msg{margin-top:10px;height:auto!important;min-height: 664px;}
-.works_form{float: left; width: 700px;}
-.form-group{ padding:5px; border-bottom: 1px #e8e8e8 solid;}
-.control-label{ border-right: 1px #f5f5f5 solid;}
-
-.works_msg{ margin-left:730px;width: 230px; border: 1px #e8e8e8 solid; padding: 10px;}
-.works_msg_block{margin-bottom: 5px;}
-
-.works_msg_user img{border-radius:20px;}
-.works_msg_time{float: right;}
-.works_msg_info{margin: 2px; padding: 1px;}
+/*.editor{width:810px; height:800px;box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);border-bottom: 1px solid #ddd}*/

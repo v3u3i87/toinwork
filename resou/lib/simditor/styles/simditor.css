@@ -144,12 +144,14 @@
 }
 
 .simditor {
-  position: relative;
-  border: 1px solid #c9d8db;
+    position: relative;
+  /*border: 1px solid #c9d8db;*/
+    /*box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);*/
+    /*border: 1px solid #ddd*/
 }
 .simditor .simditor-wrapper {
   position: relative;
-  background: #ffffff;
+  /*background: #ffffff;*/
 }
 .simditor .simditor-wrapper > textarea {
   display: none !important;
@@ -160,7 +162,7 @@
   line-height: 1.6;
   border: none;
   padding: 22px 15px 40px;
-  min-height: 300px;
+  min-height: 1000px;
   outline: none;
   background: transparent;
   resize: none;
@@ -199,15 +201,26 @@
   bottom: 0;
   left: 0;
 }
-.simditor .simditor-body {
-  padding: 22px 15px 40px;
-  min-height: 300px;
-  outline: none;
-  cursor: text;
-  position: relative;
-  z-index: 1;
-  background: transparent;
+.simditor .simditor-boxs{
+    box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 50px 70px;
+    min-height: 1000px;
+    outline: none;
+    /*outline: none;*/
+    /*cursor: text;*/
+    /*position: relative;*/
+    /*z-index: 1;*/
 }
+
+/*设置内部区域*/
+.simditor .simditor-body {
+      cursor: text;
+      /*position: relative;*/
+      z-index: 1;
+}
+
 .simditor .simditor-body a.selected {
   background: #b3d4fd;
 }
@@ -256,8 +269,8 @@
   -webkit-user-select: text;
 }
 .simditor .simditor-toolbar {
-  border-bottom: 1px solid #eeeeee;
-  background: #ffffff;
+  /*border-bottom: 1px solid #eeeeee;*/
+  /*background: #ffffff;*/
   width: 100%;
 }
 .simditor .simditor-toolbar > ul {

@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="zn-CH">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@val('name')</title>
+    @public_css('/resou/lib/bootstrap/css/bootstrap.min.css')
+    @css('docs.css')
+    @public_css('/resou/lib/simditor/styles/simditor.css')
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
+<header class="head">
+
+    <div class="header">
+
+        <div class="logo">
+            <span class="glyphicon glyphicon-menu-left"></span>
+        </div>
+
+        <div class="nav">
+
+            <ul>
+                <li><a href="#">帮助</a></li>
+                <li><a href="#">笔记</a></li>
+                <li><a href="#">通知</a></li>
+                <li><a href="#"><img src="/resou/img/dummy_user.jpg"></a></li>
+            </ul>
+
+        </div>
+        <!--./header-->
+    </div>
+</header>
+
+<section class="docs_show_main">
+    <textarea id="editor"></textarea>
+</section>
+
 
 </body>
 </html>
+
+<script data-main="/resou/js/main.js" data-model="docs_show" src="/resou/js/require.js"></script>

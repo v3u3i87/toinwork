@@ -259,6 +259,83 @@ class WorksLogic{
     }
 
 
+    /**
+     * 工作详情
+     * @param $works_id
+     * @param $design_id
+     * @return array|bool
+     */
+    public static function show($works_id,$design_id)
+    {
+        $_works = Works::where(array('id'=>$works_id,'is_status'=>1,'design_id'=>$design_id))->find();
+
+        if(!$_works)
+        {
+            return false;
+        }
+
+        $data = WorksInfo::where(array('works_id'=>$_works['id'],'design_id'=>$design_id))->get();
+
+        if(!$data)
+        {
+            return false;
+        }
+
+        $tmp = [];
+        $templateIdSo =[];
+        foreach($data as $k=>$v)
+        {
+            $tmp[$k]['works_info_id']= $v['id'];
+            $tmp[$k]['works_id']= $v['works_id'];
+            $tmp[$k]['design_id']= $v['design_id'];
+            $tmp[$k]['template_id'] = $v['template_id'];
+            $tmp[$k]['tag']= $v['tag'];
+            //判断k
+            if($v['tag'] === 'textarea')
+            {
+                //多行文本
+                $tmp[$k]['val'] = $v['textarea'];
+
+            }elseif($v['tag'] === 'editor'){
+                //编辑器
+                $tmp[$k]['val'] = $v['editor'];
+            }else{
+                //普通数据
+                $tmp[$k]['val'] = $v['val'];
+            }
+            $tmp[$k]['update_time'] = $v['update_time'];
+            $tmp[$k]['create_time'] = $v['create_time'];
+            $templateIdSo[] = $v['template_id'];
+        }
+
+        $templateData = WorkTemplate::in_where('id',$templateIdSo)->sort('sort',false)->get();
+        $info = [];
+
+        foreach($templateData as $k=>$v)
+        {
+            $info[$k]['template_id'] = $v['id'];
+            $info[$k]['design_id'] = $v['work_design_id'];
+            $info[$k]['works_name'] = $v['works_name'];
+
+            $info[$k]['tag_data'] = $v['tag_data'];
+            $info[$k]['tag_id'] = $v['tag_id'];
+            $info[$k]['set_default'] = $v['set_default'];
+            $info[$k]['sole'] = $v['sole'];
+            $info[$k]['sort'] = $v['sort'];
+            $info[$k]['relate_id'] = $v['relate_id'];
+            $info[$k]['is_status'] = $v['is_status'];
+            $info[$k]['works_info'] = [];
+            if($tmp[$k]['template_id'] == $v['id'])
+            {
+                $tmp[$k]['sort'] = $v['sort'];
+                $info[$k]['works_info'] = $tmp[$k];
+            }
+
+
+        }
+        return $info;
+    }
+
 
 
 

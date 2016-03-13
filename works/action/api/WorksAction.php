@@ -115,10 +115,6 @@ class WorksAction extends BaseAction{
             $this->msg(205,'抱歉,您的设计工作系不存在..');
         });
 
-        $list['project'] = array('project_id'=>$project['id'],'name'=>$project['name'],'icon'=>$project['icon']);
-        $list['design'] = ['design_id'=>$design['id'],'name'=>$design['name'],'icon'=>$design['icon']];
-
-
         $works_id = Data::get('works_id',0,function($val) use($design)
         {
             if(empty($val))
@@ -129,46 +125,21 @@ class WorksAction extends BaseAction{
            return $val;
         });
 
-        $info = Works::where(array('id'=>$works_id,'is_status'=>1,'design_id'=>$design['id']))->find();
-
-        if($info)
-        {
-            $data = WorksInfo::where(array('works_id'=>$info['id'],'design_id'=>$design['id']))->get();
-            if($data)
-            {
-                $tmp = [];
-                foreach($data as $k=>$v)
-                {
-                    $tmp[$k]['works_info_id']= $v['id'];
-                    $tmp[$k]['works_id']= $v['works_id'];
-                    $tmp[$k]['design_id']= $v['design_id'];
-                    $tmp[$k]['template_id']= $v['template_id'];
-                    $tmp[$k]['tag']= $v['tag'];
-                    //判断k
-                    if($v['tag'] === 'textarea')
-                    {
-                        //多行文本
-                        $tmp[$k]['val'] = $v['textarea'];
-
-                    }elseif($v['tag'] === 'editor'){
-                        //编辑器
-                        $tmp[$k]['val'] = $v['editor'];
-                    }else{
-                        //普通数据
-                        $tmp[$k]['val'] = $v['val'];
-                    }
-                    $tmp[$k]['update_time']= $v['update_time'];
-                    $tmp[$k]['create_time']= $v['create_time'];
-
-                }
-                $worksInfo = $tmp;
-            }
-        }else{
-            $this->msg(205,'工作信息不存在');
-        }
+        $worksInfo = WorksLogic::show($works_id,$design['id']);
 
         if($worksInfo)
         {
+            $list['project'] = [
+                'project_id'=>$project['id'],
+                'name'=>$project['name'],
+                'icon'=>$project['icon']
+            ];
+            $list['design'] = [
+                'design_id'=>$design['id'],
+                'name'=>$design['name'],
+                'icon'=>$design['icon']
+            ];
+
             $list['info'] = $worksInfo;
             $list['msg'] = [];
             $msg = MsgLogic::byWorksId($works_id);
