@@ -20,6 +20,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
             //删除事件
             $(".item").click(function(){
                 $(this).find(".setB").empty().append('<span class="close del">×</span>');
+                //$(".setB").mouseleave().remove();
             });
 
             //删除对象
