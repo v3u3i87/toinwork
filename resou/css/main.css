@@ -2,13 +2,11 @@ body, div, dl, dt, dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textare
 table{border-collapse:collapse;border-spacing:0;}
 fieldset,img {border:0;}
 address,caption, cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
-ol,ul {list-style:none;}
+ol,ul,li {list-style:none;}
 capation,th{text-align:left;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 q:before, q:after{content:' '}
 abbr,acronym{border:0;}
-
-
 
 .f12{font-size:12px;}
 .f13{font-size:13px;}
@@ -133,36 +131,39 @@ abbr,acronym{border:0;}
 .pr50{padding-right:50px;}
 .pr100{padding-right:100px;}
 
-
-/*body{margin: auto 0; width: auto;}*/
-li{list-style:none;}
 .alert span{ text-align: center;}
 /*login*/
 .login_main{margin:10%;width: 960px; }
 .login_main {margin-left:20%;padding: 50px;}
 .login_main div.login_title{ margin-left: 15%;}
 .login_main input{ width: 300px;}
-/*头部*/
-.header{ height: 80px;border-bottom: 1px #e8e8e8 dashed}
-.header div.back,div.logo,div.nav{margin:20px 0 0 20px; }
-.header div.back button{ width: 80px;}
-.header div.back a{ width: 80px;}
 
-.header div.logo a{ width: 80px; font-size: 25px; color: #222;}
 
-.title{padding-top:10px;}
-.title small.title_info{color: #ccc; text-align: center;}
-.title p.title_name{font-size: 20px;}
-
-.header div.nav{ width: 360px;}
-
-.header div.nav ul li{ list-style:none;float: left; margin: 5px;}
-.header div.nav ul li a{text-decoration:none; color: #222;}
-
-.main{ width: 960px; margin: auto;}
+body{background: #f0f0f0;}
+.head{background-color: #fff;height: 100%;box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);border-bottom: 1px solid #ddd}
+.header{width:1136px;margin:auto;height:50px;padding-top: 15px;}
+.logo{float:left;width: 300px; cursor:pointer;}
+.logo_text{font-size: 18px;}
+.logo span{ margin-right: 5px;}
+.nav{float: right;}
+.nav ul li{float: left; margin: 0 10px;}
+.nav ul li a{color: #666;text-decoration: none;}
+.nav ul li a img{ height:20px;border-radius: 30px; margin-bottom: 2px;}
+.main{ width: 960px; margin: auto; padding: 20px 0;}
 
 /*home*/
-.projectList li,.designList li{cursor:pointer; float: left; margin: 10px; width: 215px; height: 160px; border: 1px #e8e8e8 dashed; padding: 10px; display: block;}
+.projectList li,.designList li{
+    cursor:pointer;
+    float: left;
+    margin: 10px;
+    width: 215px;
+    height: 160px;
+    border: 1px #e8e8e8 dashed;
+    padding: 10px;
+    display: block;
+    background: #fff;
+}
+
 /*.projectList li.item{cursor:pointer;}*/
 
 /*设计工作*/

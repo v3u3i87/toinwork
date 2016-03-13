@@ -16,10 +16,9 @@ define(['ku','alert','api'],function (ku,msg,api) {
         if(designList && designList.code=='200')
         {
             var project = designList.data.project;
-            $(".title_info").empty().text('返回').css({"cursor":"pointer"});
             $(".title_name").empty().text(project.name);
 
-            $(".title_info").click(function(){
+            $(".logo").click(function(){
                 return ku.jump('/main/home');
             });
 

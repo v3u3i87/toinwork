@@ -10,16 +10,16 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
         if(worksList && worksList.code == '200')
         {
             var data = worksList.data;
-            $(".title_info").empty().text('返回项目-'+data.project.name).css({"cursor":"pointer"});
+            //$(".title_info").empty().text('返回项目-'+data.project.name).css({"cursor":"pointer"});
             $(".title_name").empty().text(data.design.name);
 
 
             //返回工作区
-            $(document).on('click','.title_info',function()
+            $(document).on('click','.logo',function()
             {
                 return ku.jump('/main/workspace?project_id='+project_id);
             });
-
+        
             //进入详情
             $(document).on('click','.works_info',function()
             {
