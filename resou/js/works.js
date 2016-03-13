@@ -19,7 +19,7 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
             {
                 return ku.jump('/main/workspace?project_id='+project_id);
             });
-        
+
             //进入详情
             $(document).on('click','.works_info',function()
             {
