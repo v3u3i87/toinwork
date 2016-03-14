@@ -10,17 +10,20 @@ define(['ku','alert','api'],function (ku,msg,api) {
 
     var designList = api.designList(project_id);
 
+
     function init()
     {
+        $(".title_name").empty().text('无工作区');
+
+        $(".logo").click(function(){
+            return ku.jump('/main/home');
+        });
 
         if(designList && designList.code=='200')
         {
             var project = designList.data.project;
             $(".title_name").empty().text(project.name);
 
-            $(".logo").click(function(){
-                return ku.jump('/main/home');
-            });
 
             viewDesignList(designList.data);
 

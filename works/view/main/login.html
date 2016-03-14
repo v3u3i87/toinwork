@@ -15,36 +15,28 @@
     <![endif]-->
 </head>
 
-<body>
+<body class="login_layout">
 
-<div class="container-fluid">
-    <div class="row">
+<div class="login_main">
 
-        <div class="login_main">
-
-                <div class="login_title">
-                    <h2>登陆</h2>
-                </div>
-
-                <div class="form-group">
-                    <label>邮箱</label>
-                    <input type="email" class="form-control email"  placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label>密码</label>
-                    <input type="password" class="form-control passwd" placeholder="Password">
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-danger login_submit">登陆</button>
-                    <div class="">
-                        <a href="#">忘记密码?</a>
-                    </div>
-                </div>
-
+        <div class="login_logo">
+            <h1>toinwork <small>Beta.1</small></h1>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label>您的邮箱</label>
+            <input type="email" class="form-control email"  placeholder="Email">
+        </div>
+
+        <div class="form-group">
+            <label>您的密码</label>
+            <input type="password" class="form-control passwd"  placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-info login_submit">登陆</button>
+            <span class="forgot_password"><a href="">忘记密码?</a></span>
+        </div>
 </div>
 
 </body>

@@ -4,6 +4,7 @@ define(['ku','alert'],function (ku,alert) {
     function init()
     {
         var obj = {email:$(".email"),passwd:$(".passwd")};
+
         $(".login_submit").click(function()
         {
             var emailVal = obj.email.val();
@@ -17,7 +18,7 @@ define(['ku','alert'],function (ku,alert) {
                     console.log(req);
                     ku.setVal('token',req.data.token);
                     alert.success('正在登陆,请稍后');
-                    window.location.href='/main/home';
+                    ku.jump('/main/home');
                 } else {
                     alert.warning(req.msg);
                 }
