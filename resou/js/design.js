@@ -14,9 +14,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
             //返回跳转
             backJump();
             //拖拉逻辑
-            sortableLogin();
-
-
+            setSortableLogin();
             //删除事件
             $(".item").click(function(){
                 $(this).find(".setB").empty().append('<span class="close del">×</span>');
@@ -41,7 +39,7 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
      * 拖拉逻辑
      * @constructor
      */
-    function sortableLogin()
+    function setSortableLogin()
     {
 
         Sortable.create(field_list, {

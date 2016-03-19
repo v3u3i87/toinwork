@@ -32,7 +32,7 @@ require.config(
             //交互的API
             'api':'api',
             //工作区
-            'workspace':'workspace',
+            //'workspace':'workspace',
             //工作详情
             'works_show':'works_show',
         },

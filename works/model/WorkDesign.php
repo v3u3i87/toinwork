@@ -19,6 +19,16 @@ class WorkDesign extends \works\model\BaseModel{
     {
         return self::where(['id'=>$design_id,'is_status'=>1])->find();
     }
+
+
+    /**
+     * @param $projectId
+     * @return mixed
+     */
+    public static function projectIdByCount($projectId)
+    {
+        return self::where(array('project_id'=>$projectId,'is_status'=>1))->getTotal();
+    }
     
 
 

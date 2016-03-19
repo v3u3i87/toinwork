@@ -17,7 +17,7 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
             //返回工作区
             $(document).on('click','.logo',function()
             {
-                return ku.jump('/main/workspace?project_id='+project_id);
+                return ku.jump('/main/home?project_id='+project_id);
             });
 
             //进入详情

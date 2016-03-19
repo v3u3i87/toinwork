@@ -12,6 +12,7 @@ namespace works\logic;
 
 use works\model\Project;
 use works\model\ProjectUser;
+use works\model\WorkDesign;
 
 class ProjectLogic{
 
@@ -54,7 +55,17 @@ class ProjectLogic{
                 {
                     $data[] = $v['project_id'];
                 }
-                return Project::byIdInList($data);
+                $data = Project::byIdInList($data);
+                foreach($data as $k=>$v)
+                {
+                    $data[$k]['design_count'] = 0;
+                    $tmp = WorkDesign::projectIdByCount($v['project_id']);
+                    if($tmp >= 1)
+                    {
+                        $data[$k]['design_count'] = $tmp;
+                    }
+                }
+                return $data;
             }
         }
         return false;

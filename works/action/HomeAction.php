@@ -28,16 +28,5 @@ class HomeAction extends BaseAction{
     }
 
 
-    /**
-     * 工作区
-     * @throws \Upadd\Bin\UpaddException
-     */
-    public function workspace(){
-        $this->val('name','工作区 - toinwork');
-        $this->view('workspace.html');
-    }
-
-
-
 
 }
