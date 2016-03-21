@@ -48,7 +48,7 @@ class getSession
      */
     public function get($key=null)
     {
-        if(isset($this->_data[$key]))
+        if($this->is_key($key))
         {
             return $this->_data[$key];
         }
