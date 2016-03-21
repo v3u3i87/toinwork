@@ -10,7 +10,7 @@ class getSession
     private static $_instanceof = null;
 
     //存放数据
-    public $_data = array();
+    private $_data = array();
 
     protected static function getInstanceof()
     {
@@ -33,7 +33,7 @@ class getSession
      */
     public static function init()
     {
-        if(!isset($_SESSION['data']))
+        if(!isset($_SESSION['data']) || !($_SESSION['data']) instanceof self)
         {
             $_SESSION['data'] = self::getInstanceof();
         }
