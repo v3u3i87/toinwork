@@ -3,8 +3,9 @@
 //判断登陆
 Routes::filters('login',function() {
 
-   if(!isset($_COOKIE['token']))
+   if(!Session::get('token'))
    {
        jump('/');
    }
+
 });

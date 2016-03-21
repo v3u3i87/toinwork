@@ -31,8 +31,6 @@ require.config(
             'design':'design',
             //交互的API
             'api':'api',
-            //工作区
-            //'workspace':'workspace',
             //工作详情
             'works_show':'works_show',
         },
@@ -46,7 +44,8 @@ require.config(
 
     }
 );
-require(['jquery','bootstrap'],function ($,b) {
+require(['jquery','bootstrap'],function ($,b)
+{
     //设置提示框
     $('body').prepend('<div class="objAlert"></div>');
 
@@ -64,7 +63,9 @@ require(['jquery','bootstrap'],function ($,b) {
                 }
             });
         }
-
     }
+
+
+
 });
 

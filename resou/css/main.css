@@ -29,6 +29,8 @@ body{background: #f0f0f0;}
 
 .main{ width: 960px; margin: auto; padding: 20px 0;}
 
+.dropdown-menu{left: -100px; min-width: 100px;}
+
 .projectMenuShow{
     display: block;
     position: absolute;

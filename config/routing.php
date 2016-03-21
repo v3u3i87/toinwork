@@ -4,12 +4,8 @@ Routes::get('/', 'works\action\MainAction@login');
 
 Routes::get('/test', 'works\action\MainAction@test');
 
-//升级
-Routes::get('/upgrade','works\action\api\UpgradeAction@main');
-
 //API
 Routes::group(array('prefix' => '/api/v1'),function() {
-
 
     //上传图片
     Routes::get('/load','works\action\api\LoadAction@main');
@@ -81,6 +77,10 @@ Routes::group(array('prefix' => '/api/v1'),function() {
     //异步处理文档
     Routes::get('/docs/user/asynchronous','works\action\api\DocsAction@asynchronous');
 
+    //升级
+    Routes::get('/upgrade','works\action\api\UpgradeAction@main');
+    //退出
+    Routes::get('/quit','works\action\MainAction@quit');
 });
 
 

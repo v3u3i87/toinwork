@@ -60,6 +60,17 @@ define(['ku','alert'],function (ku,msg) {
         return ku.post('/api/v1/works/show',{token:token,project_id:project_id,design_id:design_id,works_id:works_id},'POST');
     }
 
+
+    /**
+     * 退出
+     * @returns {boolean}
+     */
+    function quit()
+    {
+        return ku.post('/api/v1/quit',{client:'web',token:token},'POST');
+    }
+
+
     /**
      * 返回函数
      */
@@ -69,6 +80,7 @@ define(['ku','alert'],function (ku,msg) {
         designList:designList,
         worksList:worksList,
         worksShow:worksShow,
+        quit:quit
     }
 
 
