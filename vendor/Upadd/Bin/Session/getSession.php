@@ -33,7 +33,7 @@ class getSession
      */
     public static function init()
     {
-        if(!isset($_SESSION['data']) || !($_SESSION['data']) instanceof self)
+        if(!isset($_SESSION['data']))
         {
             $_SESSION['data'] = self::getInstanceof();
         }

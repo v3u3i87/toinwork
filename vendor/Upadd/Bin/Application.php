@@ -195,7 +195,7 @@ class Application{
                     array($seeion, 'destroy'),
                     array($seeion, 'gc')
                 );
-                return session_start();
+                session_start();
             }
         }
     }
