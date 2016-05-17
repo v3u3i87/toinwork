@@ -21,16 +21,32 @@ return array(
     'cli_action_autoload'=>'works\\action\\',
 
     /**
+     * 开启全局别名
+     */
+    'is_alias'=>false,
+
+    /**
      * 自定义设置别名
      */
-//    'alias'=>array('Info'=>'works\Package\Info'),
+    'alias'=>array('main'=>'extend\admin\Main'),
 
-    //开启 session
-    'is_session'=>true,
+    /**
+     * 排除配置文件以外的定义文件
+     */
+    'exclude_config'=>['routing','filters','extend'],
 
+    /**
+     * 是否开启
+     */
+    'is_session'=>IS_SESSION,
 
-
-
-
+    /**
+     * 控制器
+     */
+    'set_action'=>'u',
+    /**
+     * 方法
+     */
+    'set_function'=>'p',
 
 );

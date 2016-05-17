@@ -15,7 +15,6 @@ class UserAction extends BaseAction{
 
     public function __construct()
     {
-        parent::__construct();
         $this->_userMo = new UserAccount();
     }
 

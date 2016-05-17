@@ -80,10 +80,15 @@ class TagAction extends BaseAction{
     /**
      * 系统标签字段
      */
-    public function sysWorksList(){
-        $list = Tag::where(array('type'=>1,'is_status'=>1))->get('id as tag_id,name,data,info');
-        foreach($list as $k=>$v){
-            $list[$k]['sole'] = array(array('name'=>'否','val'=>1),array('name'=>'是','val'=>2));
+    public function sysWorksList()
+    {
+        $list = Tag::where(['type'=>1,'is_status'=>1])->get('id as tag_id,name,data,info');
+        foreach($list as $k=>$v)
+        {
+            $list[$k]['sole'] = [
+                ['name'=>'否','val'=>1],
+                ['name'=>'是','val'=>2]
+            ];
         }
         $this->msg(200,'ok',$list);
     }

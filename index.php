@@ -11,9 +11,13 @@
  **/
 
 define ( 'RUNTIME', microtime ( true ) );
-define ( 'APP_DEBUG', true); // 开启调试报错
-define ( 'APP_RUN_MODE', true ); // 设置运入模式
+define ( 'APP_NAME', 'works' );
+// 开启调试报错
+define ( 'APP_DEBUG', false);
 define ( 'APP_LANG', 'zh_cn' );
+define ( 'APP_ROUTES', true );
+//是否开启 SESSION
+define ( 'IS_SESSION', true );
 
 
 //加载composer in vendor
