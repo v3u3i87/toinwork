@@ -73,53 +73,6 @@ class UserAction extends BaseAction{
         $this->msg(206,'新增失败');
     }
 
-    /**
-     * 登陆
-     */
-    public function login()
-    {
-        $client = $this->getClientType();
-        $email = Data::get('email',null,function($val)
-        {
-            if(empty($val))
-            {
-                $this->msg(205,'抱歉,邮箱不能为空');
-            }
-
-            if(!$this->_userMo->findEmail($val))
-            {
-                $this->msg(205,'抱歉,邮箱不存在');
-            }
-
-            return $val;
-        });
-
-        $passwd = Data::get('passwd',null,function($val)
-        {
-            if(empty($val))
-            {
-                $this->msg(205,'抱歉,确认密码不能为空');
-            }
-            return $val;
-        });
-
-        if($client)
-        {
-            if($loginInfo = UserLogic::login($email,$passwd))
-            {
-                //部分有待加密或是验证机制
-                if($client == 'web')
-                {
-                    Session::set('token',$loginInfo['token']);
-//                    setcookie("token", $loginInfo['token'], time()+3600);
-//                    return jump('/main/home');
-                }
-                $this->msg(200,'登陆成功',$loginInfo);
-            }
-            $this->msg(206,'邮箱或是密码错误');
-        }
-        $this->msg(206,'非法请求');
-    }
 
     /**
      * 修改密码

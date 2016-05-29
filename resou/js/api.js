@@ -67,9 +67,8 @@ define(['ku','alert'],function (ku,msg) {
      */
     function quit()
     {
-        return ku.post('/api/v1/quit',{client:'web',token:token},'POST');
+        return ku.post('/api/v1/user/quit',{client:'web',token:token},'POST');
     }
-
 
     /**
      * 返回函数

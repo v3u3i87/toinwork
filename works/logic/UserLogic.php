@@ -30,8 +30,7 @@ class UserLogic{
             if ($accInfo = UserAccount::loginCheck($email, $passwd))
             {
                 $time = time();
-                $token = get_hash($email . $time);
-
+                $token = self::setToken($email, $passwd);
                 $save = array(
                     'access_token' => $token,
                     'access_time'=>$time,
@@ -39,15 +38,24 @@ class UserLogic{
                     'last_ip' => getClient_id(),
                     'update_time' => $time,
                 );
-
                 $req = UserAccount::save($save, array('uid' => $accInfo['uid']));
                 if ($req) {
                     return array('token' => $token, 'time' => (date('Y/m/d-H/i/s', $time)));
                 }
             }
         }
-
         return false;
+    }
+
+
+    /**
+     * 退出
+     * @param $user
+     * @return mixed
+     */
+    public static function quit($user)
+    {
+       return UserAccount::save(['access_token'=>1,'access_time'=>1], array('uid' => $user['uid']));
     }
 
 
@@ -68,13 +76,25 @@ class UserLogic{
                 //获取时间公式
                 $byDay = strtotime(date('Y-m-d', strtotime("+{$day} day")));
                 //时间未超过
-                if ($access_time <= $byDay)
+                if ($access_time < $byDay)
                 {
                     return $accInfo;
                 }
             }
         }
         return false;
+    }
+
+
+    /**
+     * 设置token
+     * @param $email
+     * @param $passwd
+     * @return string
+     */
+    public static function setToken($email,$passwd)
+    {
+       return get_hash($email .time().$passwd.mt_rand().rand(1000, 9999));
     }
 
 

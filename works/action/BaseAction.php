@@ -29,6 +29,7 @@ class BaseAction extends Action{
         exit(json(array('code'=>$code,'msg'=>$msg,'data'=>$data)));
     }
 
+
     /**
      * 判断token
      * @return mixed
@@ -41,8 +42,8 @@ class BaseAction extends Action{
                 $this->msg(205,'抱歉,token不能为空');
             }
             $val = UserLogic::verifyTokenExpired($val);
-
-            if($val){
+            if($val)
+            {
                 return $val;
             }
             $this->msg(208,'过期或是不存在');

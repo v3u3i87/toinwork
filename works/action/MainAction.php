@@ -20,32 +20,6 @@ class MainAction extends BaseAction{
         }
     }
 
-    /**
-     * 退出
-     */
-    public function quit()
-    {
-        $client = $this->getClientType();
-        if($client == 'web')
-        {
-            $acc = $this->is_token();
-            $token = Session::get('token');
-            if ($acc['access_token'] == $token)
-            {
-                if (Session::del('token'))
-                {
-                    setcookie('token','');
-                    $this->msg(200, '退出成功');
-                } else {
-                    $this->msg(204, '服务有点小问题,无法退出..');
-                }
-            }
-        }else{
-            $this->msg(201,'目前退出仅支持网页.');
-        }
-        $this->msg(206,'非法请求');
-    }
-
     public function test()
     {
 //        if(isset($_COOKIE['info']))

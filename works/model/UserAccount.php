@@ -80,7 +80,8 @@ class UserAccount extends BaseModel{
      * @param $token
      * @return mixed
      */
-    public static function tokenCheck($token){
+    public static function tokenCheck($token)
+    {
         return self::where(array('access_token'=>$token))->find();
     }
 

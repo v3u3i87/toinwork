@@ -5,12 +5,15 @@ Routes::get('/', 'works\action\MainAction@login');
 Routes::get('/test', 'works\action\MainAction@test');
 
 //API
-Routes::group(array('prefix' => '/api/v1'),function() {
+Routes::group(array('prefix' => '/api/v1'),function()
+{
 
     //上传图片
     Routes::get('/load','works\action\api\LoadAction@main');
     //登陆验证
-    Routes::get('/user/login','works\action\api\UserAction@login');
+    Routes::get('/user/login','works\action\api\CommonAction@login');
+    //退出
+    Routes::get('/user/quit','works\action\api\CommonAction@quit');
     //新增账号
     Routes::get('/user/new','works\action\api\UserAction@add');
     //修改密码
@@ -79,8 +82,7 @@ Routes::group(array('prefix' => '/api/v1'),function() {
 
     //升级
     Routes::get('/upgrade','works\action\api\UpgradeAction@main');
-    //退出
-    Routes::get('/quit','works\action\MainAction@quit');
+
 });
 
 
