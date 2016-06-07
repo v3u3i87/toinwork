@@ -26,7 +26,7 @@ Routes::group(array('prefix' => '/api/v1'),function()
     //编辑标签
     Routes::get('/tag/edit','works\action\api\TagAction@edit');
     //标签工作字段
-    Routes::get('/tag/sys/field','works\action\api\TagAction@sysWorksList');
+    Routes::get('/tag/sys/field','works\action\api\TagAction@webField');
 
     #项目相关
 

@@ -73,7 +73,23 @@ body{background: #f0f0f0;}
 /*.projectList li.item{cursor:pointer;}*/
 
 /*设计工作*/
-.diy{float:left; margin:0;box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);width:680px; height:auto!important;min-height: 664px; padding:20px;background: #fff;}
+.diy{
+    float:left;
+    width:680px;
+    height:auto!important;
+    box-shadow: 0px 2px 3px 0px rgba(100,100,100,0.15);
+    min-height: 664px;
+    padding:20px;
+    background: #fff;
+}
+
+.field{
+    /*margin-left:700px;*/
+    float: right;
+    padding:10px;
+    width:250px;
+}
+
 .diy_name{padding:10px 0;}
 
 .diy_design{margin:10px 0;border-top: 1px #c0c0c0 dashed;}
@@ -88,11 +104,21 @@ body{background: #f0f0f0;}
 #diy_design_field li:hover{border: 1px #222 dashed;}
 #diy_design_field li.on:hover{border: 1px solid #008ed2;}
 
-
-.field{margin:0 0 0 690px;padding:10px; width:250px;}
-.field h5{color: #555;}
 /*字段*/
-.field_ul li{cursor:pointer;list-style:none;float:left;margin:5px;padding: 5px;width:100px; background:#fff;color:#2b2b2b;text-align: center;}
+
+.field h5{color: #555;clear: both;}
+.field_ul li
+{
+    cursor:pointer;
+    list-style:none;
+    float:left;
+    margin:5px;
+    padding: 5px;
+    width:100px;
+    background:#fff;
+    color:#2b2b2b;
+    text-align: center;
+}
 .field_ul li:hover{ background:#5bc0de;color:#fff;}
 
 .field_ul li .li-show {display: none;}

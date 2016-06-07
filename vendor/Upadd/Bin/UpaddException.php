@@ -13,16 +13,12 @@ namespace Upadd\Bin;
 
 use Exception;
 
-class UpaddException extends Exception {
+class UpaddException extends Exception
+{
 
     public function __construct($msg = '', $code = 10000,Exception $previous = null)
     {
-        if(APP_DEBUG) {
-            $code = intval($code);
-            parent::__construct($msg, $code, $previous);
-        }else{
-            msg($code,$msg,$previous);
-        }
+        parent::__construct($msg, $code, $previous);
     }
 
 }

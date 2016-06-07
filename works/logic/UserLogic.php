@@ -94,7 +94,7 @@ class UserLogic{
      */
     public static function setToken($email,$passwd)
     {
-       return get_hash($email .time().$passwd.mt_rand().rand(1000, 9999));
+       return sha1($email .time().$passwd.mt_rand().rand(1000, 9999));
     }
 
 

@@ -4,6 +4,7 @@ define(['ku','alert','api','dataTables'],function (ku,msg,api) {
     var design_id = ku.getUrlParam('design_id');
 
     var worksList = api.worksList(project_id,design_id);
+    console.log(worksList);
 
     function init()
     {

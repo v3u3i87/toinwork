@@ -84,8 +84,6 @@ class CommonAction extends BaseAction
                 if($client == 'web')
                 {
                     Session::set('token',$loginInfo['token']);
-//                    setcookie("token", $loginInfo['token'], time()+3600);
-//                    return jump('/main/home');
                 }
                 $this->msg(200,'登陆成功',$loginInfo);
             }

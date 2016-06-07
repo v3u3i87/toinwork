@@ -79,11 +79,24 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
      */
     function viewField(v)
     {
-        //console.log(v);
         var h = '';
         for(var i=0;i < v.length;i++)
         {
-            h+='<li class="item">'+v[i].name+'<span class="setB"></span><div class="li-show"><input type="text"></div></li>';
+            h+='<h5>'+v[i].name+'</h5>';
+            if(ku.is_null(v[i]['list']))
+            {
+                var list = v[i]['list'];
+                for(var ii=0;ii<list.length;ii++)
+                {
+                    var lv = list[ii];
+                    h+='<li class="item">';
+                    h+= lv.name;
+                    h+='<span class="setB"></span>';
+                    h+='<div class="li-show"><input type="text"></div>';
+                    h+='</li>';
+                }
+            }
+
         }
         //console.log(h);
         $(".field_ul").empty().html(h);

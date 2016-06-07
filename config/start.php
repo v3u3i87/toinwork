@@ -49,4 +49,15 @@ return array(
      */
     'set_function'=>'p',
 
+    /**
+     * 设置session系列
+     */
+    'session'=>[
+        'domain'=>false,
+        'expire'=>false,
+        'use_cookies'=>false,
+        'cache_limiter'=>false,
+        'cache_expire'=>false,
+    ],
+
 );

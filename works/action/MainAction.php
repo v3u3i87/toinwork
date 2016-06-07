@@ -22,13 +22,6 @@ class MainAction extends BaseAction{
 
     public function test()
     {
-//        if(isset($_COOKIE['info']))
-//        {
-//            p($_COOKIE);
-//        }else{
-//            vd(setcookie("info", 1212, time()+3600));
-//        }
-
         $keytitle = Data::get('in',null);
         if($keytitle)
         {

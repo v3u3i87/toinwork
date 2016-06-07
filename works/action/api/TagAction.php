@@ -80,17 +80,39 @@ class TagAction extends BaseAction{
     /**
      * 系统标签字段
      */
-    public function sysWorksList()
+    public function webField()
     {
-        $list = Tag::where(['type'=>1,'is_status'=>1])->get('id as tag_id,name,data,info');
-        foreach($list as $k=>$v)
+        $list = Tag::where(['status'=>1,'model'=>1])->sort('sort',false)->get('id as tag_id,name,data,info,fid');
+        $data = [];
+
+        for($i=0;$i<count($list);$i++)
         {
-            $list[$k]['sole'] = [
-                ['name'=>'否','val'=>1],
-                ['name'=>'是','val'=>2]
-            ];
+            $nav = [];
+            if($list[$i]['fid'] == 0)
+            {
+                $nav['tag_id'] = $list[$i]['tag_id'];
+                $nav['name'] = $list[$i]['name'];
+                $nav['info'] = $list[$i]['info'];
+                foreach($list as $k=>$v)
+                {
+                    $tmp = [];
+                    if ($v['fid'] == $nav['tag_id'])
+                    {
+                        $tmp['tag_id'] = $v['tag_id'];
+                        $tmp['name'] = $v['name'];
+                        $tmp['data'] = $v['data'];
+                        $tmp['info'] = $v['info'];
+                        $tmp['sole'] = [
+                            ['name' => '否', 'val' => 1],
+                            ['name' => '是', 'val' => 2]
+                        ];
+                        $nav['list'][] = $tmp;
+                    }
+                }
+                $data[] = $nav;
+            }
         }
-        $this->msg(200,'ok',$list);
+        $this->msg(200,'ok',$data);
     }
 
 

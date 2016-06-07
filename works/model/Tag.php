@@ -25,7 +25,7 @@ class Tag extends \works\model\BaseModel{
                 return self::save($data,array('id'=>$tag_id,'type'=>$type_id));
             } else {
                 $data['type'] = $type_id;
-                $data['is_status'] = 1;
+                $data['status'] = 1;
                 $data['update_time'] = time();
                 $data['create_time'] = time();
                 return self::add($data);
@@ -39,7 +39,7 @@ class Tag extends \works\model\BaseModel{
      * @return mixed
      */
     public static function getSysField(){
-        $data = self::where(array('type'=>1,'is_status'=>1))->get('data');
+        $data = self::where(array('type'=>1,'status'=>1))->get('data');
         if($data) {
             $tmp = [];
             foreach ($data as $k => $v) {
