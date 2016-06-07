@@ -18,7 +18,7 @@ return array(
     ),
 
     //CLI模式下命名空间
-    'cli_action_autoload'=>'works\\action\\',
+    'cli_action_autoload'=>'console\\action\\',
 
     /**
      * 开启全局别名
