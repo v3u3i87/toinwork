@@ -11,14 +11,15 @@ require.config(
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
             'ku': 'ku',
             'alert':'alert',
-            'fakeLoader':'../lib/fakeLoader/fakeLoader.min',
+            'fakeLoader':'../lib/fakeLoader/fakeLoader',
             'Sortable':'../lib/Sortable/Sortable',
             'jqcookie':'../lib/jquery/jquery.cookie',
             'simditor':'../lib/simditor/simditor',
             'simple-module':'../lib/simditor/module',
             'simple-hotkeys':'../lib/simditor/hotkeys',
             'simple-uploader':'../lib/simditor/uploader',
-
+            //字段渲染
+            'field-design':'field/design',
             //数据表格
             'dataTables':'../lib/DataTables/media/js/jquery.dataTables.min',
             //demo test
@@ -44,10 +45,16 @@ require.config(
 
     }
 );
-require(['jquery','bootstrap'],function ($,b)
+require(['jquery','bootstrap','jquery','fakeLoader'],function ($,b,jQuery,fakeLoader)
 {
+
     //设置提示框
-    $('body').prepend('<div class="objAlert"></div>');
+    $('body').prepend('<div id="fakeLoader"></div><div class="objAlert"></div>');
+    $('#fakeloader').fakeLoader({
+        timeToHide:1200,
+        bgColor:"#e74c3c",
+        spinner:"spinner2"
+    });
 
     var script = $('script[data-main][data-model]');
     var models = script.attr('data-model').split(',');

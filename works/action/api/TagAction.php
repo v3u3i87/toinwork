@@ -34,10 +34,10 @@ class TagAction extends BaseAction{
                 }
                 return $val;
             }),
-            'data'=>Data::get('data',null,function($val){
+            'field'=>Data::get('field',null,function($val){
                 if(empty($val))
                 {
-                    $this->msg(205,'抱歉,data不能为空');
+                    $this->msg(205,'抱歉,field不能为空');
                 }
                 return $val;
             }),
@@ -82,7 +82,7 @@ class TagAction extends BaseAction{
      */
     public function webField()
     {
-        $list = Tag::where(['status'=>1,'model'=>1])->sort('sort',false)->get('id as tag_id,name,data,info,fid');
+        $list = Tag::where(['status'=>1,'model'=>1])->sort('sort',false)->get('id as tag_id,name,field,info,fid');
         $data = [];
 
         for($i=0;$i<count($list);$i++)
@@ -100,7 +100,7 @@ class TagAction extends BaseAction{
                     {
                         $tmp['tag_id'] = $v['tag_id'];
                         $tmp['name'] = $v['name'];
-                        $tmp['data'] = $v['data'];
+                        $tmp['field'] = $v['field'];
                         $tmp['info'] = $v['info'];
                         $tmp['sole'] = [
                             ['name' => '否', 'val' => 1],

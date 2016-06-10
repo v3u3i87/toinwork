@@ -1,4 +1,4 @@
-define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
+define(['ku','alert','api','Sortable','field-design'],function (ku,msg,api,Sortable,design) {
 
     var fieldData = api.getFieldList();
 
@@ -67,9 +67,10 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
      */
     function backJump()
     {
-        $(".confirm_jump").click(function(){
+        $(".confirm_jump").click(function()
+        {
             console.log('跳转');
-            ku.jump('/main/home');
+            return ku.jump('/main/home');
         });
     }
 
@@ -89,18 +90,21 @@ define(['ku','alert','api','Sortable'],function (ku,msg,api,Sortable) {
                 for(var ii=0;ii<list.length;ii++)
                 {
                     var lv = list[ii];
+                    var key = lv.field;
                     h+='<li class="item">';
-                    h+= lv.name;
+                    h+= '<span class="set_name">'+lv.name+'</span>';
                     h+='<span class="setB"></span>';
-                    h+='<div class="li-show"><input type="text"></div>';
+                    h+='<div class="li-show">';
+                        h+= design.init(key,lv);
+                    h+='</div>';
                     h+='</li>';
                 }
             }
 
         }
-        //console.log(h);
         $(".field_ul").empty().html(h);
     }
+
 
     return {
         init:init
