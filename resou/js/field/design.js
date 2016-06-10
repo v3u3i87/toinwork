@@ -34,8 +34,8 @@ define(['ku','alert'],function (ku,msg)
                 return radio(v);
                 break;
             //多选
-            case 'checkbox':
-                return checkbox(v);
+            case 'radio':
+                return radio(v);
                 break;
             //下拉单选
             case 'select':
@@ -61,6 +61,7 @@ define(['ku','alert'],function (ku,msg)
             case 'load_annex':
                 return load_annex(v);
                 break;
+
             //关联数据
             case 'associate':
                 return associate(v);
@@ -78,12 +79,14 @@ define(['ku','alert'],function (ku,msg)
         var h = '';
         h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -91,13 +94,16 @@ define(['ku','alert'],function (ku,msg)
     function textarea(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦."></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -106,13 +112,16 @@ define(['ku','alert'],function (ku,msg)
     function editor(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -120,13 +129,16 @@ define(['ku','alert'],function (ku,msg)
     function numerical(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -134,13 +146,16 @@ define(['ku','alert'],function (ku,msg)
     function percentage(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -148,13 +163,16 @@ define(['ku','alert'],function (ku,msg)
     function money(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -162,27 +180,33 @@ define(['ku','alert'],function (ku,msg)
     function radio(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
 
-    function checkbox(v)
+    function radio(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -190,13 +214,16 @@ define(['ku','alert'],function (ku,msg)
     function select(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -205,12 +232,14 @@ define(['ku','alert'],function (ku,msg)
     {
         var h = '';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -218,13 +247,16 @@ define(['ku','alert'],function (ku,msg)
     function user_sole(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -233,12 +265,14 @@ define(['ku','alert'],function (ku,msg)
     {
         var h = '';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -246,13 +280,16 @@ define(['ku','alert'],function (ku,msg)
     function load_image(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
@@ -260,41 +297,46 @@ define(['ku','alert'],function (ku,msg)
     function load_annex(v)
     {
         var h = '';
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
 
     function associate(v)
     {
-        var h = '';
+        var h = ''
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>默认值</dt>';
         h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>是否必填</dt>';
+        h+='<dd><label><input type="radio" name="not_null" value="1"><span>否</span></label><label><input type="radio" name="not_null" value="2"><span>是</span></label></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }
 
     function separated(v)
     {
-        var h = '';
+        var h = ''
+        h+='<p>'+v.info+'</p>';
         h+='<dl>';
-        h+='<dt>默认值</dt>';
-        h+='<dd><input type="text" name="defaults" placeholder="请输入默认值"></dd>';
-        h+='<dt>设置</dt>';
-        h+='<dd><label><input type="checkbox" name="not_null"><span>必填</span></label></dd>';
+        h+='<dt>字段名称</dt>';
+        h+='<dd><input type="text" name="name" class="in_name" placeholder="请输入字段名称"></dd>';
         h+='<dt>说明</dt>';
-        h+='<dd><textarea name="explain" placeholder="1212"></textarea></dd>';
+        h+='<dd><textarea name="explain" placeholder="请输入说明哦"></textarea></dd>';
         h+='</dl>';
         return h;
     }

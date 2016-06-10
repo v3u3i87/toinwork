@@ -1,5 +1,4 @@
-define(['ku','alert','api'],function (ku,msg,api) {
-
+define(['ku','alert','api','user'],function (ku,msg,api,user) {
 
     //获取项目列表
     var projectList = api.projectList();
@@ -7,6 +6,7 @@ define(['ku','alert','api'],function (ku,msg,api) {
 
     function init()
     {
+        user.usrRun();
 
         if(project_id)
         {
@@ -19,7 +19,7 @@ define(['ku','alert','api'],function (ku,msg,api) {
             //渲染项目列表
             viewProjectList(projectList.data);
 
-            //projectMenu
+            //项目切换
             $(document).on('mouseover','.logo',function()
             {
                 $(this).addClass('projectMenuShow').siblings().removeClass('projectMenuShow');
@@ -43,19 +43,6 @@ define(['ku','alert','api'],function (ku,msg,api) {
             return msg.info('hi,您并没有加入任何项目哦..');
         }
 
-
-        //切换区域渲染
-        $(document).on('click','.user-quit',function()
-        {
-            var req = api.quit();
-            if(req.code == '200') {
-                $.cookie("token", null, {path: "/"});
-                msg.info('退出成功');
-                return ku.jump('/');
-            }else{
-                return msg.info(req.msg);
-            }
-        });
 
     }
 

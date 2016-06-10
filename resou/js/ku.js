@@ -128,7 +128,6 @@ define(['alert','jqcookie'],function (msg) {
         {
             return window.location.href = u;
         }
-        //msg.internal('没有正确的URL地址');
         console.log('没有正确的URL地址');
     };
 
@@ -143,7 +142,7 @@ define(['alert','jqcookie'],function (msg) {
         }else{
             return null;
         }
-    }
+    };
 
     //返回对象
     return {
@@ -155,7 +154,7 @@ define(['alert','jqcookie'],function (msg) {
         setVal: setVal,
         getVal: getVal,
         jump:jump,
-        getUrlParam:getUrlParam
+        getUrlParam:getUrlParam,
     }
 
 

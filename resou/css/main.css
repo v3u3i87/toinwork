@@ -103,7 +103,12 @@ body{background: #f0f0f0;}
 #diy_design_field li{cursor:pointer;}
 #diy_design_field li:hover{border: 1px #222 dashed;}
 #diy_design_field li.on:hover{border: 1px solid #008ed2;}
-
+/*
+设置名称
+*/
+.
+.set_name{ display:block; width:230px;border-right: 1px solid #e8e8e8;}
+.set_name:hover{color: #e8e8e8;}
 /*字段*/
 
 .field h5{color: #555;clear: both;}

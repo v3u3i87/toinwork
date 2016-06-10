@@ -11,6 +11,9 @@ require.config(
             'enc-base64':'../lib/CryptoJS/components/enc-base64',
             'ku': 'ku',
             'alert':'alert',
+            //交互的API
+            'api':'api',
+            'user':'user',
             'fakeLoader':'../lib/fakeLoader/fakeLoader',
             'Sortable':'../lib/Sortable/Sortable',
             'jqcookie':'../lib/jquery/jquery.cookie',
@@ -30,8 +33,6 @@ require.config(
             'home':'home',
             //设计
             'design':'design',
-            //交互的API
-            'api':'api',
             //工作详情
             'works_show':'works_show',
         },
@@ -45,34 +46,36 @@ require.config(
 
     }
 );
-require(['jquery','bootstrap','jquery','fakeLoader'],function ($,b,jQuery,fakeLoader)
+require(['jquery','bootstrap'],function ($,b)
 {
 
-    //设置提示框
-    $('body').prepend('<div id="fakeLoader"></div><div class="objAlert"></div>');
-    $('#fakeloader').fakeLoader({
-        timeToHide:1200,
-        bgColor:"#e74c3c",
-        spinner:"spinner2"
-    });
-
-    var script = $('script[data-main][data-model]');
-    var models = script.attr('data-model').split(',');
-    if (models.length > 0)
+    $(function()
     {
-        for (var i = 0; i < models.length; i++)
+        //设置提示框
+        $('body').prepend('<div id="fakeLoader"></div><div class="objAlert"></div>');
+        //$('#fakeloader').fakeLoader({
+        //    timeToHide:1200,
+        //    bgColor:"#e74c3c",
+        //    spinner:"spinner2"
+        //});
+
+        var script = $('script[data-main][data-model]');
+        var models = script.attr('data-model').split(',');
+        if (models.length > 0)
         {
-            require([models[i]], function (m)
+            for (var i = 0; i < models.length; i++)
             {
-                if (m && m.init)
+                require([models[i]], function (m)
                 {
-                    m.init();
-                }
-            });
+                    if (m && m.init)
+                    {
+                        m.init();
+                    }
+                });
+            }
         }
-    }
 
-
+    })
 
 });
 

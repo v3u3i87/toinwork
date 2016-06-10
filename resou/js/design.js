@@ -15,6 +15,7 @@ define(['ku','alert','api','Sortable','field-design'],function (ku,msg,api,Sorta
             backJump();
             //拖拉逻辑
             setSortableLogin();
+
             //删除事件
             $(".item").click(function(){
                 $(this).find(".setB").empty().append('<span class="close del">×</span>');
@@ -22,12 +23,24 @@ define(['ku','alert','api','Sortable','field-design'],function (ku,msg,api,Sorta
             });
 
             //删除对象
-            $(document).on('click','.del',function(){
+            $(document).on('click','.del',function()
+            {
                 $(".on").remove();
             });
 
-            $(document).on('click','#diy_design_field li',function() {
+            /**
+             * 边框
+             */
+            $(document).on('click','#diy_design_field li',function()
+            {
                 $(this).addClass('on').siblings().removeClass('on');
+
+                //设置名称
+                $('.in_name').on('change',function()
+                {
+                    $('.on .set_in_name').text($(this).val());
+                });
+
             });
 
         }else{
@@ -92,7 +105,7 @@ define(['ku','alert','api','Sortable','field-design'],function (ku,msg,api,Sorta
                     var lv = list[ii];
                     var key = lv.field;
                     h+='<li class="item">';
-                    h+= '<span class="set_name">'+lv.name+'</span>';
+                    h+= '<span class="set_in_name">'+lv.name+'</span>';
                     h+='<span class="setB"></span>';
                     h+='<div class="li-show">';
                         h+= design.init(key,lv);

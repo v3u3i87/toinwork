@@ -1,6 +1,7 @@
 define(function () {
 
     var objAlert = $(".objAlert");
+    var number = 700;
 
     /**
      * 内部使用
@@ -15,25 +16,37 @@ define(function () {
     //成功
     function success(text)
     {
-        return objAlert.empty().html(msg('alert-success','',text));
+        objAlert.empty().html(msg('alert-success','',text));
+        return setTimeout(function () {
+            return objAlert.empty();
+        }, number);
     }
 
     //信息
     function info(text)
     {
-        return objAlert.empty().html(msg('alert-info','',text));
+        objAlert.empty().html(msg('alert-info','',text));
+        return setTimeout(function () {
+            return objAlert.empty();
+        }, number);
     }
 
     //警告
     function warning(text)
     {
-        return objAlert.empty().html(msg('alert-warning','',text));
+         objAlert.empty().html(msg('alert-warning','',text));
+        return setTimeout(function () {
+            return objAlert.empty();
+        }, number);
     }
 
     //危险
     function danger(text)
     {
-        return objAlert.empty().html(msg('alert-danger','',text));
+        objAlert.empty().html(msg('alert-danger','',text));
+        return setTimeout(function () {
+            return objAlert.empty();
+        }, number);
     }
 
     /**
