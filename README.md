@@ -1,4 +1,4 @@
-toinwork是一款php+mysql开发的业务协作应用程序,完全基于MIT许可开源,toinwork可应用于日常办公，IT业务开发，数据统计或是数据分析.
+toinwork是一款php+mysql开发的业务协作应用程序,遵循Apache2开源协议发布,toinwork可应用于日常办公，IT业务开发，数据统计或是数据分析.
 
 #toinwork功能
 ```
@@ -19,11 +19,11 @@ toinwork是一款php+mysql开发的业务协作应用程序,完全基于MIT许�
 #支持类型
 ```
 web客户端、
+IOS客户端、
+Android客户端、
 ```
 #有待客户端开发
 ```
-IOS客户端、
-Android客户端、
 PC客户端(有待验证,基于nw.js)
 ```
 #应用程序升级部分
